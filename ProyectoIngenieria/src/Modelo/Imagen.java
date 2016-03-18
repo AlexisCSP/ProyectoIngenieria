@@ -10,5 +10,11 @@ package Modelo;
  * @author alexis
  */
 public class Imagen {
-    
+    private String RutaIMG;
+    public String getRutaIMG() {
+        return RutaIMG;
+    }
+    public void setRutaIMG(String rutimg) {
+        RutaIMG = rutimg;
+    }
 }

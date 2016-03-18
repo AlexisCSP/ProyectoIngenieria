@@ -10,5 +10,18 @@ package Modelo;
  * @author alexis
  */
 public class PuntoInteres {
+    private Obra ob;
+    
+    public Imagen getImagenObra() {
+        return ob.getImagen();
+    }
+    
+    public String getCaracteristicasObra() {
+        return ob.ObtenerCaracteristicas();
+    }
+    
+    public String getNombreObra() {
+        return ob.getNombre();
+    }
     
 }

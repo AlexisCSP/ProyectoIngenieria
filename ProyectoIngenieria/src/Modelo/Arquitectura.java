@@ -9,6 +9,6 @@ package Modelo;
  *
  * @author alexis
  */
-public class Arquitectura {
+public class Arquitectura extends Obra {
     
 }

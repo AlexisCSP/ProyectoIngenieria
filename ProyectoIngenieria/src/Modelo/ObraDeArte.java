@@ -9,6 +9,13 @@ package Modelo;
  *
  * @author alexis
  */
-public class ObraDeArte {
+public class ObraDeArte extends Obra {
+    public int Paneles;
     
+    public int getPaneles() {
+        return Paneles;
+    }
+    public void setPaneles(int p) {
+        Paneles = p;
+    }
 }
