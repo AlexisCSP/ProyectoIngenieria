@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author alexis
@@ -17,6 +19,15 @@ public class IRol extends javax.swing.JFrame {
     public IRol() {
         initComponents();
     }
+    
+    
+public void addBotonVisitanteListener(ActionListener listenForBotonVisitante) {
+    boton_visitante.addActionListener(listenForBotonVisitante);
+}
+
+public void addBotonAdministradorListener(ActionListener listenForBotonAdministrador) {
+    boton_administrador.addActionListener(listenForBotonAdministrador);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,21 +38,74 @@ public class IRol extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        boton_visitante = new javax.swing.JButton();
+        boton_administrador = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tours Virtuales");
+
+        jLabel1.setText("Usted es:");
+
+        boton_visitante.setText("Visitante");
+        boton_visitante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_visitanteMouseClicked(evt);
+            }
+        });
+        boton_visitante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_visitanteActionPerformed(evt);
+            }
+        });
+
+        boton_administrador.setText("Administrador");
+
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel2.setText("Tours Virtuales UCV");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(boton_visitante)
+                        .addGap(18, 18, 18)
+                        .addComponent(boton_administrador))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(jLabel2)))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(boton_visitante)
+                    .addComponent(boton_administrador))
+                .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void boton_visitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_visitanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_visitanteActionPerformed
+
+    private void boton_visitanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_visitanteMouseClicked
+        
+    }//GEN-LAST:event_boton_visitanteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -79,5 +143,9 @@ public class IRol extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton boton_administrador;
+    private javax.swing.JButton boton_visitante;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
