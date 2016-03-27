@@ -9,6 +9,13 @@ import Vista.*;
 import Modelo.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 
 public final class Ctrl_Patrimonio {
     // Vistas
@@ -26,11 +33,23 @@ public final class Ctrl_Patrimonio {
     private ConjPuntosInteres conjunto_puntos;
     
     
-    public Ctrl_Patrimonio() {
+    public Ctrl_Patrimonio() throws IOException {
         instanciarVistas();
         centrarVistas();
         addListeners();
+        agregarPuntosInteres();
         mostrarIRol();
+    }
+    
+    private void agregarPuntosInteres() throws UnsupportedEncodingException, IOException {
+        InputStream in = new FileInputStream(new File("obras.txt"));
+        BufferedReader br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
+        conjunto_puntos = new ConjPuntosInteres();
+        String datos;
+        while ((datos = br.readLine()) != null) {
+            System.out.println(datos);
+            conjunto_puntos.addPuntoInteres(datos);
+        }
     }
     
     class BotonVisitanteListener implements ActionListener {

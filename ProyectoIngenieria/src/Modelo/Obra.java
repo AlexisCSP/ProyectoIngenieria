@@ -9,7 +9,17 @@ package Modelo;
  *
  * @author alexis
  */
-public class Obra {
+public abstract class Obra {
+    
+    public Obra(String datos) {
+        String[] parts = datos.split("#", -1);
+        ID = parts[1];
+        Autor = parts[2];
+        Nombre = parts[3];
+        AnoCreacion = parts[4];
+        Ubicacion = parts[5];
+        Descripcion = parts[6];
+    }
 
     Imagen getImagen() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -23,4 +33,13 @@ public class Obra {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    
+    protected String ID;
+    protected String Nombre;
+    protected String Autor;
+    protected String AnoCreacion;
+    protected String Ubicacion;
+    protected String Descripcion;
+    protected String Categoria;
+    protected Imagen Image;
 }

@@ -1,0 +1,36 @@
+29#A-A-1#Villanueva Carlos#Aula Magna#1945-1953#Aula Magna##
+9#A-A-2#Villanueva Carlos#Edificio Comunicaciones#1945-1953#Plaza del Rectorado##
+5#A-A-3#Villanueva Carlos#Facultad de Ciencias#1935-1937#Facultad de Ciencias (antigua Escuela Técnica Industrial)##
+3#A-A-4#Villanueva Carlos#Facultad de Farmacia#1945-1953#Facultad de Farmacia##
+1#A-A-5#Villanueva Carlos#Facultad de Odontología#1945-1953#Facultad de Odontología##
+7#A-A-6#Villanueva Carlos#Patio de Honor#1945-1953#Plaza del Rectorado##
+28#A-A-7#Villanueva Carlos#Plaza Cubierta#1950-1953#Plaza entre Rectorado y Aula Magna##
+24#A-A-8#Villanueva Carlos#Paraninfo#1945-1953#Rectorado##
+14#A-A-9#Villanueva Carlos#Rectorado#1945-1953#Rectorado##
+33#A-A-10#Villanueva Carlos#Sala de Conciertos#1945-1953#entre Aula Magna y Biblioteca Central##
+31#OA-ELP-11#Calder Alexander#Nubes Acústicas#1953#Aula Magna#Metal y madera policromada#
+35#OA-ELP-12#Manaure Mateo#Complementos Acústicos#1954#Sala de Conciertos#Madera bicromada#
+20#OA-ESC-13#Arp Jean#Pastor de Nubes#1953#Rectorado#Bronce patinado, bruñido y pulido#
+16#OA-ESC-14#Laurens Henri#Amphion#1953#Rectorado#Bronce patinado y pulido#
+23#OA-ESC-15#Lobo Baltazar#Maternidad#1954#Tierra de Nadie - Rectorado#Bronce patinado, con base en granito#
+11#OA-ESC-16#Narváez Francisco#La Cultura#1954#Rectorado#Bronce patinado#
+22#OA-ESC-17#Pevsner Antoine#El Dinamismo en 30 grados#1953#Rectorado#Bronce patinado#
+34#OA-ESC-18#Vasarely Víctor#Positivo - Negativo#1954#Sala de Conciertos#Estructura en aluminio y hierro#
+8#OA-ESC-19#Villanueva Carlos#Torre del Reloj#1953#Plaza del Rectorado##
+12#OA-MUR-20#Barrios Armando#Sin Título#1953#Rectorado#Mosaicos vítreos industriales de 2 x 2 cm#
+10#OA-MUR-21# Bloc André# Sin Título#1954# Plaza del Rectorado# Mosaicos vítreos artesanales venecianos#
+2#OA-MUR-22#Carreño Omar#Fachadas edificio de Odontología#1957#Facultad de Odontología#Mosaicos vítreos industriales de 2 x 2 cm Policromía#
+15#OA-MUR-23#Castro Pedro#Fechas Magnas de la Universidad#1954#Rectorado#Pintura al fresco#
+17#OA-MUR-24#Léger Fernand#Sin Título#1954#Rectorado#Hormigón y mosaicos artesanales de 2 x 2 cm#
+6#OA-MUR-25#Manaure Mateo#Sin Título#1954#Facultad de Ciencias#Planchas en cobre y aluminio pulido#
+21#OA-MUR-26#Manaure Mateo#Sin Título#1954#Rectorado#Hormigón y cerámica esmaltada#
+25#OA-MUR-27#Manaure Mateo#Sin Título#1954#Paraninfo#Cerámica esmaltada#
+18#OA-MUR-28#Navarro Pascual#Sin Título#1954#Rectorado#Hormigón y mosaicos vítreos de 2x2cm#
+36#OA-MUR-29#Oramas Alirio#Variación en 36 Colores#1954#Biblioteca Central#Mosaicos vítreos industriales de 2x2cm#
+4#OA-MUR-30#Otero Alejandro#Fachadas edificio de Farmacia#1959#Facultad de Farmacia#Mosaicos vítreos industriales de 2x2cm Policromía#
+19#OA-MUR-31#Vasarely Víctor#Homenaje a Malévitch#1954#Rectorado#Hormigón y cerámica esmaltada#
+30#OA-MUD-32#González Carlos#Sin Título#1953#Aula Magna#Mosaicos vítreos industriales de 2 x 2 cm#
+13#OA-MUD-33#Vigas Oswaldo#Composición Estática. Composición Dinámica#1954#Rectorado# Mosaicos artesanales venecianos#
+32#OA-MUT-34#Vasarely Víctor#Sophia#1954#Aula Magna#Cerámica esmaltada y concreto pintado#
+26#OA-VIT-35#Manaure Mateo#Sin Título#1954#Paraninfo#Hormigón y vidrio#
+27#OA-VIT-36#Manaure Mateo#Sin Título#1954#Paraninfo#Vitral, estructura de vidrio y concreto#

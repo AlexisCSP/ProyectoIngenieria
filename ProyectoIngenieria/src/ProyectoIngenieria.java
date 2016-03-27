@@ -1,5 +1,6 @@
 
 import Controlador.Ctrl_Patrimonio;
+import java.io.IOException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,7 +14,7 @@ import Controlador.Ctrl_Patrimonio;
  */
 public class ProyectoIngenieria {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Ctrl_Patrimonio patrimonio = new Ctrl_Patrimonio();
     }
     

@@ -13,4 +13,10 @@ import java.util.ArrayList;
  */
 public class ConjPuntosInteres {
     private ArrayList<PuntoInteres> ListaPuntosInteres;
+    public ConjPuntosInteres() {
+        ListaPuntosInteres = new ArrayList<PuntoInteres>();
+    }
+    public void addPuntoInteres(String datos) {
+        ListaPuntosInteres.add(new PuntoInteres(datos));
+    }
 }
