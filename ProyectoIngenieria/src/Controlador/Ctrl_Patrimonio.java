@@ -42,14 +42,18 @@ public final class Ctrl_Patrimonio {
     }
     
     private void agregarPuntosInteres() throws UnsupportedEncodingException, IOException {
-        InputStream in = new FileInputStream(new File(getClass().getClassLoader().getResource("Resources/obras.txt").getFile()));
-        BufferedReader br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
-        conjunto_puntos = new ConjPuntosInteres();
-        String datos;
-        while ((datos = br.readLine()) != null) {
-            System.out.println(datos);
-            conjunto_puntos.addPuntoInteres(datos);
+        try (InputStream in = new FileInputStream(new File(getClass().getClassLoader().getResource("Resources/obras.txt").getFile()));) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
+            conjunto_puntos = new ConjPuntosInteres();
+            String datos;
+            while ((datos = br.readLine()) != null) {
+                System.out.println(datos);
+                conjunto_puntos.addPuntoInteres(datos);
+            }
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
+        
     }
     
     class BotonVisitanteListener implements ActionListener {
