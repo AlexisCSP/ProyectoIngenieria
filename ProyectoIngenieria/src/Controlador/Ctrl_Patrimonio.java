@@ -42,7 +42,7 @@ public final class Ctrl_Patrimonio {
     }
     
     private void agregarPuntosInteres() throws UnsupportedEncodingException, IOException {
-        try (InputStream in = new FileInputStream(new File(getClass().getClassLoader().getResource("Resources/obras.txt").getFile()));) {
+        try (InputStream in = new FileInputStream(new File(getClass().getClassLoader().getResource("data/obras.txt").getFile()));) {
             BufferedReader br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
             conjunto_puntos = new ConjPuntosInteres();
             String datos;
