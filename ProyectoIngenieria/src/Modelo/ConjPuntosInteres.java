@@ -6,13 +6,9 @@
 package Modelo;
 
 import java.util.ArrayList;
-
-/**
- *
- * @author alexis
- */
+        
 public class ConjPuntosInteres {
-    private ArrayList<PuntoInteres> ListaPuntosInteres;
+    public ArrayList<PuntoInteres> ListaPuntosInteres;
     public ConjPuntosInteres() {
         ListaPuntosInteres = new ArrayList<PuntoInteres>();
     }

@@ -50,6 +50,11 @@ public class IAgregarTour extends javax.swing.JFrame {
         jTextField3.setEditable(false);
 
         boton_atras.setText("Atras");
+        boton_atras.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                boton_atrasKeyPressed(evt);
+            }
+        });
 
         boton_anadir.setText("Añadir");
 
@@ -103,6 +108,10 @@ public class IAgregarTour extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void boton_atrasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boton_atrasKeyPressed
+
+    }//GEN-LAST:event_boton_atrasKeyPressed
 
     /**
      * @param args the command line arguments
