@@ -177,8 +177,11 @@ public class IModificarTour extends javax.swing.JFrame {
     }
     
     public String tourSeleccionado(){
-        String x = tour_seleccionado.getSelectedItem().toString();
-        return x;
+        if (tour_seleccionado.getSelectedItem() != null) {
+            String x = tour_seleccionado.getSelectedItem().toString();
+            return x;
+        }
+        return "";
     }
     
     public JRadioButton getRadioDisponible() {

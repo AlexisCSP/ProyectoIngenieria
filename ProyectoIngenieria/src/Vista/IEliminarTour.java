@@ -31,7 +31,7 @@ public class IEliminarTour extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        tour_seleccionado = new javax.swing.JComboBox<>();
         boton_atras = new javax.swing.JButton();
         boton_eliminar = new javax.swing.JButton();
 
@@ -57,7 +57,7 @@ public class IEliminarTour extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tour_seleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -66,7 +66,7 @@ public class IEliminarTour extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tour_seleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boton_atras)
@@ -121,12 +121,15 @@ public class IEliminarTour extends javax.swing.JFrame {
     }
     
     public JComboBox<String> getComboBox() {
-        return jComboBox1;
+        return tour_seleccionado;
     }
     
     public String tourSeleccionado(){
-        String x = jComboBox1.getSelectedItem().toString();
-        return x;
+        if (tour_seleccionado.getSelectedItem() != null) {
+            String x = tour_seleccionado.getSelectedItem().toString();
+            return x;
+        }
+        return "";
     }
 
     
@@ -134,7 +137,7 @@ public class IEliminarTour extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_atras;
     private javax.swing.JButton boton_eliminar;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> tour_seleccionado;
     // End of variables declaration//GEN-END:variables
 }

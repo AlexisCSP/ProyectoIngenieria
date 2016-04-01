@@ -76,34 +76,39 @@ public final class Ctrl_Patrimonio {
         boolean disponibilidad = modificar_tour.getSelectedButton();
         boolean Repetido = conjunto_tours.nombreExiste(nuevoNombre);
         if(numTours > 0){
-            if(Repetido == false && !"".equals(nuevoNombre)){
+            if(Repetido == false){
                 while((conjunto_tours.getnombre(contador) == null ? tourViejo != null : !conjunto_tours.getnombre(contador).equals(tourViejo)) && contador <=numTours){
                     contador++;
                 }
                 if(conjunto_tours.getnombre(contador) == null ? tourViejo == null : conjunto_tours.getnombre(contador).equals(tourViejo)){
-                   conjunto_tours.Tour(contador).setDisponibilidad(disponibilidad);
-                   conjunto_tours.Tour(contador).setNombre(nuevoNombre);
-                } 
-            }else{
+                    conjunto_tours.Tour(contador).setDisponibilidad(disponibilidad);
+                    if ("".equals(nuevoNombre)) {
+                    } else {
+                        conjunto_tours.Tour(contador).setNombre(nuevoNombre);
+                    } 
+                }else{
                 System.out.println("Error");               //ACA DEBERIAMOS MOSTRAR UNA PESTAÑA DE ERROR
+                }
             }
         }
     }
     
     
     private void eliminarTour(){
-       String nombreTour;
-       nombreTour= eliminar_tour.tourSeleccionado();
-       int contador=0;
-       while((conjunto_tours.getnombre(contador) == null ? nombreTour != null : !conjunto_tours.getnombre(contador).equals(nombreTour)) && contador <=numTours){
-           contador++;
-       }
-       if(conjunto_tours.getnombre(contador) == null ? nombreTour == null : conjunto_tours.getnombre(contador).equals(nombreTour)){
-          conjunto_tours.deleteTour(contador);
-          numTours = numTours - 1;
-          TourVirtual.decCantTours();
-       }
-   }
+        String nombreTour;
+        nombreTour= eliminar_tour.tourSeleccionado();
+        int contador=0;
+        if (TourVirtual.getCantTours() > 0) {
+            while((conjunto_tours.getnombre(contador) == null ? nombreTour != null : !conjunto_tours.getnombre(contador).equals(nombreTour)) && contador <=numTours){
+            contador++;
+            }
+            if(conjunto_tours.getnombre(contador) == null ? nombreTour == null : conjunto_tours.getnombre(contador).equals(nombreTour)){
+                conjunto_tours.deleteTour(contador);
+                numTours = numTours - 1;
+                TourVirtual.decCantTours();
+            }
+        }
+    }
     
     
     private void agregarTourCJ() throws UnsupportedEncodingException, IOException {
