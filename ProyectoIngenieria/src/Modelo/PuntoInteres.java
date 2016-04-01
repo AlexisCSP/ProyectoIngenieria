@@ -28,4 +28,8 @@ public class PuntoInteres {
         return ob.getNombre();
     }
     
+    public String getIDObra () {
+        return ob.getID();
+    }
+    
 }

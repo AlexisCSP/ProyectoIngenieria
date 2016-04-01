@@ -33,6 +33,10 @@ public abstract class Obra {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public String getID () {
+        return ID;
+    }
+    
     
     protected String ID;
     protected String Nombre;

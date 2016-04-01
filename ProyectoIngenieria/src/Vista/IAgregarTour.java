@@ -32,9 +32,9 @@ public class IAgregarTour extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        leerNombreAT = new javax.swing.JTextField();
+        leerArchivoAT = new javax.swing.JTextField();
+        escribirIDAT = new javax.swing.JTextField();
         boton_atras = new javax.swing.JButton();
         boton_anadir = new javax.swing.JButton();
 
@@ -47,7 +47,13 @@ public class IAgregarTour extends javax.swing.JFrame {
 
         jLabel3.setText("ID del Tour");
 
-        jTextField3.setEditable(false);
+        leerArchivoAT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leerArchivoATActionPerformed(evt);
+            }
+        });
+
+        escribirIDAT.setEditable(false);
 
         boton_atras.setText("Atras");
         boton_atras.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -76,12 +82,12 @@ public class IAgregarTour extends javax.swing.JFrame {
                             .addComponent(boton_atras))
                         .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(escribirIDAT, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(boton_anadir)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE))))
+                            .addComponent(leerNombreAT)
+                            .addComponent(leerArchivoAT, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE))))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -90,15 +96,15 @@ public class IAgregarTour extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(leerNombreAT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(leerArchivoAT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(escribirIDAT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boton_atras)
@@ -112,6 +118,10 @@ public class IAgregarTour extends javax.swing.JFrame {
     private void boton_atrasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boton_atrasKeyPressed
 
     }//GEN-LAST:event_boton_atrasKeyPressed
+
+    private void leerArchivoATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leerArchivoATActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_leerArchivoATActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,14 +166,37 @@ public class IAgregarTour extends javax.swing.JFrame {
         boton_anadir.addActionListener(listenForBotonAnadir);
     }
     
+    public String nombreDelArchivo () {
+        String nombreArchivo;
+        nombreArchivo = leerArchivoAT.getText();
+        return nombreArchivo;
+    }
+    
+    public void limpiar () {
+        leerNombreAT.setText("");
+        leerArchivoAT.setText("");
+        escribirIDAT.setText("");
+    }
+    
+    public String nombreTourVirtual () {
+        String nombreTourVirtual;
+        nombreTourVirtual = leerNombreAT.getText();
+        return nombreTourVirtual;
+    }
+    
+    public void escribirID (String IDParaEscribir) {
+        escribirIDAT.setText(IDParaEscribir);
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_anadir;
     private javax.swing.JButton boton_atras;
+    private javax.swing.JTextField escribirIDAT;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField leerArchivoAT;
+    private javax.swing.JTextField leerNombreAT;
     // End of variables declaration//GEN-END:variables
 }

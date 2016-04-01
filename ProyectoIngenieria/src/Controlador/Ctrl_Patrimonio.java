@@ -12,10 +12,14 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public final class Ctrl_Patrimonio {
     // Vistas
@@ -28,12 +32,16 @@ public final class Ctrl_Patrimonio {
     private IRecorrerTour recorrer_tour;
     private IRol rol;
     private ISeleccionarTour seleccionar_tour;
+    private int numTours;
+    private int totalPuntosCJ;
     // Modelos
     private ConjTourVirtuales conjunto_tours;
     private ConjPuntosInteres conjunto_puntos;
     
     
     public Ctrl_Patrimonio() throws IOException {
+        numTours=0;
+        totalPuntosCJ=0;
         instanciarVistas();
         centrarVistas();
         addListeners();
@@ -49,11 +57,80 @@ public final class Ctrl_Patrimonio {
             while ((datos = br.readLine()) != null) {
                 System.out.println(datos);
                 conjunto_puntos.addPuntoInteres(datos);
+                totalPuntosCJ++;
             }
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
         
+    }
+    
+    private void agregarTourCJ() throws UnsupportedEncodingException, IOException {
+         
+            String nombreArchivo;
+            String nombreTourVirtual;
+            String lecturaCJ;
+            int iCJ=0;
+            boolean existeElNombre=true;
+            ArrayList<PuntoInteres> ListaPuntosInteresDeTour;
+            ListaPuntosInteresDeTour = new ArrayList<>();
+            nombreArchivo = agregar_tour.nombreDelArchivo();
+            nombreTourVirtual = agregar_tour.nombreTourVirtual();
+           
+            try (InputStream reCJ = new FileInputStream(new File(getClass().getClassLoader().getResource("data/" + nombreArchivo).getFile()));){
+                BufferedReader readCJ= new BufferedReader(new InputStreamReader(reCJ, "UTF-8"));
+                
+                if (numTours==0) {
+                conjunto_tours = new ConjTourVirtuales ();
+                conjunto_tours.addTourVirtual();
+                conjunto_tours.agregarNombre(numTours, nombreTourVirtual);
+                
+                while ((lecturaCJ = readCJ.readLine()) != null) {
+                String[] parts = lecturaCJ.split("#", -1);
+                lecturaCJ = parts[1];
+                iCJ=0;       
+                    while (iCJ<totalPuntosCJ && (lecturaCJ == null ? conjunto_puntos.IDActual(iCJ) != null : !lecturaCJ.equals(conjunto_puntos.IDActual(iCJ)))) {
+                        iCJ++;
+                    }
+                    
+                if (iCJ<totalPuntosCJ){
+                ListaPuntosInteresDeTour.add(conjunto_puntos.getPuntoActual(iCJ));
+                
+                
+                }
+                }
+                
+                conjunto_tours.guardarPuntosInteresTour(numTours , ListaPuntosInteresDeTour);
+                
+                }else{
+                    conjunto_tours.addTourVirtual();
+                conjunto_tours.agregarNombre(numTours, nombreTourVirtual);
+                
+                while ((lecturaCJ = readCJ.readLine()) != null) {
+                String[] parts = lecturaCJ.split("#", -1);
+                lecturaCJ = parts[1];
+                iCJ=0;       
+                    while (iCJ<totalPuntosCJ && (lecturaCJ == null ? conjunto_puntos.IDActual(iCJ) != null : !lecturaCJ.equals(conjunto_puntos.IDActual(iCJ)))) {
+                        iCJ++;
+                    }
+                    
+                if (iCJ<totalPuntosCJ){
+                ListaPuntosInteresDeTour.add(conjunto_puntos.getPuntoActual(iCJ));
+                
+                
+                }
+                }
+                
+                conjunto_tours.guardarPuntosInteresTour(numTours , ListaPuntosInteresDeTour);
+                
+                }
+                numTours++;
+                
+            } catch (FileNotFoundException | UnsupportedEncodingException ex) {
+                Logger.getLogger(Ctrl_Patrimonio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+          agregar_tour.limpiar();  
     }
     
     class BotonVisitanteListener implements ActionListener {
@@ -187,9 +264,13 @@ public final class Ctrl_Patrimonio {
     class BotonAnadirListenerAT implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            // Logica para agregar tour
+            try {
+                agregarTourCJ();
+            } catch (IOException ex) {
+                Logger.getLogger(Ctrl_Patrimonio.class.getName()).log(Level.SEVERE, null, ex);
+            }
             ocultarIAgregarTour();
-            mostrarIOpciones();
+            mostrarIOpciones(); 
         }    
     }
     

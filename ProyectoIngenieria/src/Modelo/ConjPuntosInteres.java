@@ -15,4 +15,11 @@ public class ConjPuntosInteres {
     public void addPuntoInteres(String datos) {
         ListaPuntosInteres.add(new PuntoInteres(datos));
     }
+    public String IDActual (int iCJ) {
+        return ListaPuntosInteres.get(iCJ).getIDObra();
+    }
+    
+    public PuntoInteres getPuntoActual (int iCJ) {
+        return ListaPuntosInteres.get(iCJ);
+    }
 }

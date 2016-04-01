@@ -23,7 +23,8 @@ public class TourVirtual {
     public TourVirtual() {
         ++cantTours;
         ID = cantTours;
-        Disponibilidad = false;
+        Disponibilidad = true;
+        ListaPuntosInteres=new ArrayList<>();
     }
 
     public int getID() {
@@ -55,7 +56,12 @@ public class TourVirtual {
     }
     
     public void setListaPuntosInteres(ArrayList<PuntoInteres> list) {
-        ListaPuntosInteres = list;
+        int ICJ=0;
+        int detenerCJ=list.size();
+        while (ICJ<detenerCJ) {
+        ListaPuntosInteres.add(list.get(ICJ)) ; 
+        ICJ++;
+        }
     }
     
     public IndiceConcreto createIterator() {
