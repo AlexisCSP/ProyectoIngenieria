@@ -39,8 +39,6 @@ public class IContrasena extends javax.swing.JFrame {
 
         jLabel1.setText("Contraseña:");
 
-        jPasswordField1.setText("jPasswordField1");
-
         boton_atras.setText("Atras");
 
         boton_continuar.setText("Continuar");
@@ -120,6 +118,14 @@ public class IContrasena extends javax.swing.JFrame {
 
     public void addBotonContinuarListener(ActionListener listenForBotonContinuar) {
         boton_continuar.addActionListener(listenForBotonContinuar);
+    }
+    
+    public char[] getPassword() {
+        return jPasswordField1.getPassword();
+    }
+    
+    public void limpiar () {
+        jPasswordField1.setText("");
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

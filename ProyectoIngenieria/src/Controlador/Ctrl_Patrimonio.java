@@ -20,6 +20,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -188,6 +189,10 @@ public final class Ctrl_Patrimonio {
         return toursDisponibles;
     }
     
+    public boolean contrasenaCorrecta() {
+        return "12345678".equals(new String(contrasena.getPassword()));
+    }
+    
     public void setRadioButton(String nombreTour) {
        int contador=0;
        while((conjunto_tours.getnombre(contador) == null ? nombreTour != null : !conjunto_tours.getnombre(contador).equals(nombreTour)) && contador <=numTours){
@@ -268,10 +273,13 @@ public final class Ctrl_Patrimonio {
     class BotonContinuarListenerIC implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            // if contraseña correcta seguir
-            // else atras o quedarse
-            ocultarIContrasena();
-            mostrarIOpciones();
+            if (contrasenaCorrecta()) {
+                ocultarIContrasena();
+                mostrarIOpciones();
+            } else {
+                // Alerta mala contrasena
+                contrasena.limpiar();
+            }
         }    
     }
 
@@ -366,7 +374,6 @@ public final class Ctrl_Patrimonio {
     class BotonEliminarListenerET implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            // Logica para eliminar tour
             eliminarTour();
             ocultarIEliminarTour();
             mostrarIOpciones();
@@ -475,6 +482,7 @@ public final class Ctrl_Patrimonio {
     }
     private void ocultarIContrasena() {
         contrasena.setVisible(false);
+        contrasena.limpiar();
     }
     private void ocultarIEliminarTour() {
         eliminar_tour.setVisible(false);
