@@ -26,15 +26,24 @@ public class TourVirtual {
         Disponibilidad = true;
         ListaPuntosInteres=new ArrayList<>();
     }
+    
+    @Override
+    public String toString() {
+        return this.Nombre;
+    }
+    
+    public static int getCantTours() {
+        return cantTours;
+    }
 
     public int getID() {
         return ID;
     }
-
+/*
     public void setID(int id) {
         ID = id;
     }
-    
+*/   
     public String getNombre() {
         return Nombre;
     }

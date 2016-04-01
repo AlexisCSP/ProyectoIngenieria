@@ -6,6 +6,7 @@
 package Vista;
 
 import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -44,8 +45,6 @@ public class IModificarTour extends javax.swing.JFrame {
         setTitle("Administrador");
 
         jLabel1.setText("Modificar Tour");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel2.setText("Nuevo Nombre");
 
@@ -163,6 +162,11 @@ public class IModificarTour extends javax.swing.JFrame {
     public void addBotonModificarListener(ActionListener listenForBotonModificar) {
         boton_modificar.addActionListener(listenForBotonModificar);
     }
+    
+    public JComboBox<String> getComboBox() {
+        return jComboBox1;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup GrupoDisponibilidad;

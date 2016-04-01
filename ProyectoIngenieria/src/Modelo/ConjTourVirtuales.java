@@ -20,6 +20,10 @@ public class ConjTourVirtuales {
     public void addTourVirtual () {
         ListaToursVirtuales.add(new TourVirtual());
     }
+    
+    public ArrayList<TourVirtual> getListaToursVirtuales() {
+        return ListaToursVirtuales;
+    }
 
     public void agregarNombre (int Tour, String nombreTourActual) {
         TourVirtual cambiarCJ;

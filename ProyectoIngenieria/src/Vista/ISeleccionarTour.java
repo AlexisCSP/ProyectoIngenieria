@@ -6,6 +6,7 @@
 package Vista;
 
 import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -39,7 +40,6 @@ public class ISeleccionarTour extends javax.swing.JFrame {
 
         jLabel1.setText("Seleccione Tour Virtual");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -135,13 +135,17 @@ public class ISeleccionarTour extends javax.swing.JFrame {
         });
     }
 
-public void addBotonAtrasListener(ActionListener listenForBotonAtras) {
-    boton_atras.addActionListener(listenForBotonAtras);
-}
+    public void addBotonAtrasListener(ActionListener listenForBotonAtras) {
+        boton_atras.addActionListener(listenForBotonAtras);
+    }
 
-public void addBotonContinuarListener(ActionListener listenForBotonContinuar) {
-    boton_continuar.addActionListener(listenForBotonContinuar);
-}
+    public void addBotonContinuarListener(ActionListener listenForBotonContinuar) {
+        boton_continuar.addActionListener(listenForBotonContinuar);
+    }
+
+    public JComboBox<String> getComboBox() {
+        return jComboBox1;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_atras;

@@ -20,6 +20,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 
 public final class Ctrl_Patrimonio {
     // Vistas
@@ -42,6 +43,8 @@ public final class Ctrl_Patrimonio {
     public Ctrl_Patrimonio() throws IOException {
         numTours=0;
         totalPuntosCJ=0;
+        conjunto_tours = new ConjTourVirtuales ();
+        conjunto_puntos = new ConjPuntosInteres();
         instanciarVistas();
         centrarVistas();
         addListeners();
@@ -52,7 +55,6 @@ public final class Ctrl_Patrimonio {
     private void agregarPuntosInteres() throws UnsupportedEncodingException, IOException {
         try (InputStream in = new FileInputStream(new File(getClass().getClassLoader().getResource("data/obras.txt").getFile()));) {
             BufferedReader br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
-            conjunto_puntos = new ConjPuntosInteres();
             String datos;
             while ((datos = br.readLine()) != null) {
                 System.out.println(datos);
@@ -81,7 +83,6 @@ public final class Ctrl_Patrimonio {
                 BufferedReader readCJ= new BufferedReader(new InputStreamReader(reCJ, "UTF-8"));
                 
                 if (numTours==0) {
-                conjunto_tours = new ConjTourVirtuales ();
                 conjunto_tours.addTourVirtual();
                 conjunto_tours.agregarNombre(numTours, nombreTourVirtual);
                 
@@ -347,6 +348,8 @@ public final class Ctrl_Patrimonio {
     }
 
     private void mostrarIAgregarTour() {
+        // determinar si llevarlo en ctrl o en la clase tour virtual
+        agregar_tour.getLabelID().setText(Integer.toString(TourVirtual.getCantTours()));
         agregar_tour.setVisible(true);
     }
     private void mostrarIAlerta() {
@@ -356,9 +359,11 @@ public final class Ctrl_Patrimonio {
         contrasena.setVisible(true);
     }
     private void mostrarIEliminarTour() {
+        eliminar_tour.getComboBox().setModel(new DefaultComboBoxModel(conjunto_tours.getListaToursVirtuales().toArray()));
         eliminar_tour.setVisible(true);
     }
     private void mostrarIModificarTour() {
+        modificar_tour.getComboBox().setModel(new DefaultComboBoxModel(conjunto_tours.getListaToursVirtuales().toArray()));
         modificar_tour.setVisible(true);
     }
     private void mostrarIOpciones() {
@@ -371,6 +376,8 @@ public final class Ctrl_Patrimonio {
         rol.setVisible(true);
     }
     private void mostrarISeleccionarTour() {
+        // Modificar para seleccionar solo los tours disponibles
+        seleccionar_tour.getComboBox().setModel(new DefaultComboBoxModel(conjunto_tours.getListaToursVirtuales().toArray()));
         seleccionar_tour.setVisible(true);
     }
     

@@ -6,6 +6,7 @@
 package Vista;
 
 import java.awt.event.ActionListener;
+import javax.swing.JTextField;
 
 /**
  *
@@ -187,6 +188,10 @@ public class IAgregarTour extends javax.swing.JFrame {
     public void escribirID (String IDParaEscribir) {
         escribirIDAT.setText(IDParaEscribir);
         
+    }
+    
+    public JTextField getLabelID() {
+        return escribirIDAT;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

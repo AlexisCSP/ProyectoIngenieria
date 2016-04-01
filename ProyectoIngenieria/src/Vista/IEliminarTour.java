@@ -6,6 +6,7 @@
 package Vista;
 
 import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -37,8 +38,6 @@ public class IEliminarTour extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Tour a Eliminar");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         boton_atras.setText("Atras");
 
@@ -120,7 +119,12 @@ public class IEliminarTour extends javax.swing.JFrame {
     public void addBotonEliminarListener(ActionListener listenForBotonEliminar) {
         boton_eliminar.addActionListener(listenForBotonEliminar);
     }
-
+    
+    public JComboBox<String> getComboBox() {
+        return jComboBox1;
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_atras;
     private javax.swing.JButton boton_eliminar;
