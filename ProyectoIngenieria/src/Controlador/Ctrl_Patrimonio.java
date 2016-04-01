@@ -93,7 +93,6 @@ public final class Ctrl_Patrimonio {
         }
     }
     
-    
     private void eliminarTour(){
         String nombreTour;
         nombreTour= eliminar_tour.tourSeleccionado();
@@ -174,6 +173,19 @@ public final class Ctrl_Patrimonio {
             } catch (FileNotFoundException | UnsupportedEncodingException ex) {
                 Logger.getLogger(Ctrl_Patrimonio.class.getName()).log(Level.SEVERE, null, ex);
             }
+    }
+    
+    public ArrayList<TourVirtual> getToursDisponibles() {
+        ArrayList<TourVirtual> toursDisponibles = new ArrayList<>();
+        ArrayList<TourVirtual> tours = conjunto_tours.getListaToursVirtuales();
+        
+        for (int i = 0; i < tours.size(); ++i) {
+            
+            if (tours.get(i).getDisponibilidad() == true) {
+                toursDisponibles.add(tours.get(i));
+            }
+        }
+        return toursDisponibles;
     }
     
     public void setRadioButton(String nombreTour) {
@@ -450,8 +462,7 @@ public final class Ctrl_Patrimonio {
         rol.setVisible(true);
     }
     private void mostrarISeleccionarTour() {
-        // Modificar para seleccionar solo los tours disponibles
-        seleccionar_tour.getComboBox().setModel(new DefaultComboBoxModel(conjunto_tours.getListaToursVirtuales().toArray()));
+        seleccionar_tour.getComboBox().setModel(new DefaultComboBoxModel(getToursDisponibles().toArray()));
         seleccionar_tour.setVisible(true);
     }
     
