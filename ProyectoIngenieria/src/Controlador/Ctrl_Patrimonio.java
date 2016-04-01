@@ -69,22 +69,32 @@ public final class Ctrl_Patrimonio {
         
     }
     
-    private void modificarTour() {
-       String nombreTour;
-       nombreTour= eliminar_tour.obraSeleccionada();
-       int contador=0;
-       while((conjunto_tours.getnombre(contador) == null ? nombreTour != null : !conjunto_tours.getnombre(contador).equals(nombreTour)) && contador <=numTours){
-           contador++;
-       }
-       if(conjunto_tours.getnombre(contador) == null ? nombreTour == null : conjunto_tours.getnombre(contador).equals(nombreTour)){
-          
-       }
-       
+    private void modificarTour(){
+        String tourViejo=modificar_tour.tourSeleccionado();
+        String nuevoNombre= modificar_tour.nuevoNombre();
+        int contador=0;
+        boolean disponibilidad = modificar_tour.getSelectedButton();
+        boolean Repetido = conjunto_tours.nombreExiste(nuevoNombre);
+        if(numTours > 0){
+            if(Repetido == false){
+                while((conjunto_tours.getnombre(contador) == null ? tourViejo != null : !conjunto_tours.getnombre(contador).equals(tourViejo)) && contador <=numTours){
+                    contador++;
+                }
+                if(conjunto_tours.getnombre(contador) == null ? tourViejo == null : conjunto_tours.getnombre(contador).equals(tourViejo)){
+                   conjunto_tours.Tour(contador).setDisponibilidad(disponibilidad);
+                   conjunto_tours.Tour(contador).setNombre(nuevoNombre);
+                   modificar_tour.limpiar();
+                } 
+            }else{
+                System.out.println("Error");               //ACA DEBERIAMOS MOSTRAR UNA PESTAÑA DE ERROR
+                modificar_tour.limpiar();
+            }
+        }
     }
     
     private void eliminarTour(){
        String nombreTour;
-       nombreTour= eliminar_tour.obraSeleccionada();
+       nombreTour= eliminar_tour.tourSeleccionado();
        int contador=0;
        while((conjunto_tours.getnombre(contador) == null ? nombreTour != null : !conjunto_tours.getnombre(contador).equals(nombreTour)) && contador <=numTours){
            contador++;
@@ -134,7 +144,7 @@ public final class Ctrl_Patrimonio {
                 conjunto_tours.guardarPuntosInteresTour(numTours , ListaPuntosInteresDeTour);
                 
                 }else{
-                    conjunto_tours.addTourVirtual();
+                conjunto_tours.addTourVirtual();
                 conjunto_tours.agregarNombre(numTours, nombreTourVirtual);
                 
                 while ((lecturaCJ = readCJ.readLine()) != null) {
@@ -294,6 +304,7 @@ public final class Ctrl_Patrimonio {
     class BotonModificarListenerMT implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            modificarTour();
             ocultarIModificarTour();
             mostrarIOpciones();
         }    

@@ -25,6 +25,18 @@ public class ConjTourVirtuales {
         return ListaToursVirtuales.get(ID);
     }
     
+    public boolean nombreExiste(String nombre){
+        int contador=0;
+        while(contador <ListaToursVirtuales.size()){
+                if(!(ListaToursVirtuales.get(contador).getNombre() == null ? nombre == null : ListaToursVirtuales.get(contador).getNombre().equals(nombre))){
+                } else {
+                    return true;
+                }
+                contador=contador+1;
+            }
+        return false;
+    }
+    
     public void deleteTour(int ID){
         ListaToursVirtuales.remove(ID);
         ListaToursVirtuales.trimToSize();

@@ -8,6 +8,8 @@ package Vista;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
 import javax.swing.JComboBox;
+import java.util.Enumeration;
+import javax.swing.AbstractButton;
 import javax.swing.JRadioButton;
 
 /**
@@ -174,7 +176,7 @@ public class IModificarTour extends javax.swing.JFrame {
         return tour_seleccionado;
     }
     
-    public String obraSeleccionada(){
+    public String tourSeleccionado(){
         String x = tour_seleccionado.getSelectedItem().toString();
         return x;
     }
@@ -193,8 +195,26 @@ public class IModificarTour extends javax.swing.JFrame {
         return nuevoNombre;
     }
     
+    public boolean getSelectedButton()
+    {  
+        for (Enumeration<AbstractButton> buttons = GrupoDisponibilidad.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    if("Disponible".equals(button.getText())){
+                        return true;
+                    }
+                    if("No Disponible".equals(button.getText())){
+                        return false;
+                    }
+                        
+                }
+            }
+        return false;
+    }
+    
     public void limpiar () {
         nuevo_nombre.setText("");
+        GrupoDisponibilidad.clearSelection();
     }
     
 

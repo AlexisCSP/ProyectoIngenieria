@@ -124,7 +124,7 @@ public class IEliminarTour extends javax.swing.JFrame {
         return jComboBox1;
     }
     
-    public String obraSeleccionada(){
+    public String tourSeleccionado(){
         String x = jComboBox1.getSelectedItem().toString();
         return x;
     }
