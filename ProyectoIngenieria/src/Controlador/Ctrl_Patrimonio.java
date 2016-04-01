@@ -67,6 +67,20 @@ public final class Ctrl_Patrimonio {
         
     }
     
+    private void eliminarTour(){
+       String nombreTour;
+       nombreTour= eliminar_tour.obraSeleccionada();
+       int contador=0;
+       while((conjunto_tours.getnombre(contador) == null ? nombreTour != null : !conjunto_tours.getnombre(contador).equals(nombreTour)) && contador <=numTours){
+           contador++;
+       }
+       if(conjunto_tours.getnombre(contador) == null ? nombreTour == null : conjunto_tours.getnombre(contador).equals(nombreTour)){
+          conjunto_tours.deleteTour(contador);
+          numTours = numTours - 1;
+       }
+   }
+    
+    
     private void agregarTourCJ() throws UnsupportedEncodingException, IOException {
          
             String nombreArchivo;
@@ -287,6 +301,7 @@ public final class Ctrl_Patrimonio {
         @Override
         public void actionPerformed(ActionEvent e) {
             // Logica para eliminar tour
+            eliminarTour();
             ocultarIEliminarTour();
             mostrarIOpciones();
         }    

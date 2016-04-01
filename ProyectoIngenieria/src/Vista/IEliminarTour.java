@@ -124,6 +124,12 @@ public class IEliminarTour extends javax.swing.JFrame {
         return jComboBox1;
     }
     
+    public String obraSeleccionada(){
+        String x = jComboBox1.getSelectedItem().toString();
+        return x;
+    }
+
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_atras;

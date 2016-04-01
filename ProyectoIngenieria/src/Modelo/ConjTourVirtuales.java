@@ -21,6 +21,16 @@ public class ConjTourVirtuales {
         ListaToursVirtuales.add(new TourVirtual());
     }
     
+    public TourVirtual Tour(int ID){                //Nuevo para obtener el Tour Virtual
+        return ListaToursVirtuales.get(ID);
+    }
+    
+    public void deleteTour(int ID){
+        ListaToursVirtuales.remove(ID);
+        ListaToursVirtuales.trimToSize();
+    }
+    
+    
     public ArrayList<TourVirtual> getListaToursVirtuales() {
         return ListaToursVirtuales;
     }
