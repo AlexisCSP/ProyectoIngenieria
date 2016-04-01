@@ -205,8 +205,7 @@ public class IModificarTour extends javax.swing.JFrame {
                     }
                     if("No Disponible".equals(button.getText())){
                         return false;
-                    }
-                        
+                    }                 
                 }
             }
         return false;

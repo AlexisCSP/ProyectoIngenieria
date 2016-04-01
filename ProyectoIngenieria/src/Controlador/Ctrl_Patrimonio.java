@@ -76,21 +76,20 @@ public final class Ctrl_Patrimonio {
         boolean disponibilidad = modificar_tour.getSelectedButton();
         boolean Repetido = conjunto_tours.nombreExiste(nuevoNombre);
         if(numTours > 0){
-            if(Repetido == false){
+            if(Repetido == false && !"".equals(nuevoNombre)){
                 while((conjunto_tours.getnombre(contador) == null ? tourViejo != null : !conjunto_tours.getnombre(contador).equals(tourViejo)) && contador <=numTours){
                     contador++;
                 }
                 if(conjunto_tours.getnombre(contador) == null ? tourViejo == null : conjunto_tours.getnombre(contador).equals(tourViejo)){
                    conjunto_tours.Tour(contador).setDisponibilidad(disponibilidad);
                    conjunto_tours.Tour(contador).setNombre(nuevoNombre);
-                   modificar_tour.limpiar();
                 } 
             }else{
                 System.out.println("Error");               //ACA DEBERIAMOS MOSTRAR UNA PESTAÑA DE ERROR
-                modificar_tour.limpiar();
             }
         }
     }
+    
     
     private void eliminarTour(){
        String nombreTour;
@@ -170,8 +169,6 @@ public final class Ctrl_Patrimonio {
             } catch (FileNotFoundException | UnsupportedEncodingException ex) {
                 Logger.getLogger(Ctrl_Patrimonio.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-          agregar_tour.limpiar();  
     }
     
     public void setRadioButton(String nombreTour) {
@@ -432,6 +429,10 @@ public final class Ctrl_Patrimonio {
     }
     private void mostrarIModificarTour() {
         modificar_tour.getComboBox().setModel(new DefaultComboBoxModel(conjunto_tours.getListaToursVirtuales().toArray()));
+        String nombreTour = String.valueOf(modificar_tour.getComboBox().getSelectedItem());
+        if (modificar_tour.getComboBox().getSelectedItem() != null) {
+            setRadioButton(nombreTour);
+        }
         modificar_tour.setVisible(true);
     }
     private void mostrarIOpciones() {
@@ -451,6 +452,7 @@ public final class Ctrl_Patrimonio {
     
     private void ocultarIAgregarTour() {
         agregar_tour.setVisible(false);
+        agregar_tour.limpiar();  
     }
     private void ocultarIAlerta() {
         alerta.setVisible(false);
@@ -463,6 +465,7 @@ public final class Ctrl_Patrimonio {
     }
     private void ocultarIModificarTour() {
         modificar_tour.setVisible(false);
+        modificar_tour.limpiar();
     }
     private void ocultarIOpciones() {
         opciones.setVisible(false);
