@@ -9,6 +9,8 @@ import Vista.*;
 import Modelo.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -67,6 +69,19 @@ public final class Ctrl_Patrimonio {
         
     }
     
+    private void modificarTour() {
+       String nombreTour;
+       nombreTour= eliminar_tour.obraSeleccionada();
+       int contador=0;
+       while((conjunto_tours.getnombre(contador) == null ? nombreTour != null : !conjunto_tours.getnombre(contador).equals(nombreTour)) && contador <=numTours){
+           contador++;
+       }
+       if(conjunto_tours.getnombre(contador) == null ? nombreTour == null : conjunto_tours.getnombre(contador).equals(nombreTour)){
+          
+       }
+       
+    }
+    
     private void eliminarTour(){
        String nombreTour;
        nombreTour= eliminar_tour.obraSeleccionada();
@@ -77,6 +92,7 @@ public final class Ctrl_Patrimonio {
        if(conjunto_tours.getnombre(contador) == null ? nombreTour == null : conjunto_tours.getnombre(contador).equals(nombreTour)){
           conjunto_tours.deleteTour(contador);
           numTours = numTours - 1;
+          TourVirtual.decCantTours();
        }
    }
     
@@ -146,6 +162,21 @@ public final class Ctrl_Patrimonio {
             }
             
           agregar_tour.limpiar();  
+    }
+    
+    public void setRadioButton(String nombreTour) {
+       int contador=0;
+       while((conjunto_tours.getnombre(contador) == null ? nombreTour != null : !conjunto_tours.getnombre(contador).equals(nombreTour)) && contador <=numTours){
+           contador++;
+       }
+       if(conjunto_tours.getnombre(contador) == null ? nombreTour == null : conjunto_tours.getnombre(contador).equals(nombreTour)){
+          boolean disponible = conjunto_tours.getDisponibilidad(contador);
+          if (disponible) {
+              modificar_tour.getRadioDisponible().setSelected(true);
+          } else {
+              modificar_tour.getRadioNoDisponible().setSelected(true);
+          }
+       }
     }
     
     class BotonVisitanteListener implements ActionListener {
@@ -268,6 +299,16 @@ public final class Ctrl_Patrimonio {
         }    
     }
     
+    class ComboBoxListenerMT implements ItemListener {
+        @Override
+        public void itemStateChanged(ItemEvent e) {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                String nombreTour = String.valueOf(modificar_tour.getComboBox().getSelectedItem());
+                setRadioButton(nombreTour);
+            }
+        }
+    }
+    
     class BotonAtrasListenerAT implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -322,6 +363,7 @@ public final class Ctrl_Patrimonio {
         opciones.addBotonVolverListener(new BotonVolverListenerIO());
         modificar_tour.addBotonAtrasListener(new BotonAtrasListenerMT());
         modificar_tour.addBotonModificarListener(new BotonModificarListenerMT());
+        modificar_tour.addComboBoxListener(new ComboBoxListenerMT());
         agregar_tour.addBotonAtrasListener(new BotonAtrasListenerAT());
         agregar_tour.addBotonAnadirListener(new BotonAnadirListenerAT());
         eliminar_tour.addBotonAtrasListener(new BotonAtrasListenerET());

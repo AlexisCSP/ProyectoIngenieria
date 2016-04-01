@@ -46,6 +46,10 @@ public class ConjTourVirtuales {
         return ListaToursVirtuales.get(Tour).getNombre();
     }
     
+    public boolean getDisponibilidad (int Tour) {
+        return ListaToursVirtuales.get(Tour).getDisponibilidad();
+    }
+    
     public void guardarPuntosInteresTour (int CJ , ArrayList<PuntoInteres> list) {
         TourVirtual aCJ;
         aCJ=ListaToursVirtuales.get(CJ);

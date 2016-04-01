@@ -35,7 +35,14 @@ public class TourVirtual {
     public static int getCantTours() {
         return cantTours;
     }
+    
+    public static void decCantTours() {
+        cantTours--;
+    }
 
+    public static void incCantTours() {
+        cantTours++;
+    }
     public int getID() {
         return ID;
     }

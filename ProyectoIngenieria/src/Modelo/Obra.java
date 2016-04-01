@@ -13,6 +13,7 @@ public abstract class Obra {
     
     public Obra(String datos) {
         String[] parts = datos.split("#", -1);
+        Numero = parts[0];
         ID = parts[1];
         Autor = parts[2];
         Nombre = parts[3];
@@ -37,7 +38,7 @@ public abstract class Obra {
         return ID;
     }
     
-    
+    protected String Numero;
     protected String ID;
     protected String Nombre;
     protected String Autor;

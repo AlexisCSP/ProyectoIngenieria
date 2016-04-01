@@ -6,7 +6,9 @@
 package Vista;
 
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
 
 /**
  *
@@ -32,12 +34,12 @@ public class IModificarTour extends javax.swing.JFrame {
 
         GrupoDisponibilidad = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        tour_seleccionado = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        nuevo_nombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        radio_disponible = new javax.swing.JRadioButton();
+        radio_noDisponible = new javax.swing.JRadioButton();
         boton_atras = new javax.swing.JButton();
         boton_modificar = new javax.swing.JButton();
 
@@ -50,11 +52,11 @@ public class IModificarTour extends javax.swing.JFrame {
 
         jLabel3.setText("Disponibilidad");
 
-        GrupoDisponibilidad.add(jRadioButton1);
-        jRadioButton1.setText("Disponible");
+        GrupoDisponibilidad.add(radio_disponible);
+        radio_disponible.setText("Disponible");
 
-        GrupoDisponibilidad.add(jRadioButton2);
-        jRadioButton2.setText("No Disponible");
+        GrupoDisponibilidad.add(radio_noDisponible);
+        radio_noDisponible.setText("No Disponible");
 
         boton_atras.setText("Atras");
 
@@ -72,16 +74,16 @@ public class IModificarTour extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2)))
+                            .addComponent(radio_disponible)
+                            .addComponent(radio_noDisponible)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, 0, 406, Short.MAX_VALUE)
-                            .addComponent(jTextField1))))
+                            .addComponent(tour_seleccionado, 0, 406, Short.MAX_VALUE)
+                            .addComponent(nuevo_nombre))))
                 .addContainerGap(85, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
@@ -96,17 +98,17 @@ public class IModificarTour extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tour_seleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nuevo_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
+                        .addComponent(radio_disponible)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton2))
+                        .addComponent(radio_noDisponible))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -163,8 +165,36 @@ public class IModificarTour extends javax.swing.JFrame {
         boton_modificar.addActionListener(listenForBotonModificar);
     }
     
+    public void addComboBoxListener(ItemListener listenForComboBox) {
+        tour_seleccionado.addItemListener(listenForComboBox);
+    }
+    
+    
     public JComboBox<String> getComboBox() {
-        return jComboBox1;
+        return tour_seleccionado;
+    }
+    
+    public String obraSeleccionada(){
+        String x = tour_seleccionado.getSelectedItem().toString();
+        return x;
+    }
+    
+    public JRadioButton getRadioDisponible() {
+        return radio_disponible;
+    }
+    
+    public JRadioButton getRadioNoDisponible() {
+        return radio_noDisponible;
+    }
+    
+    public String nuevoNombre () {
+        String nuevoNombre;
+        nuevoNombre = nuevo_nombre.getText();
+        return nuevoNombre;
+    }
+    
+    public void limpiar () {
+        nuevo_nombre.setText("");
     }
     
 
@@ -172,12 +202,12 @@ public class IModificarTour extends javax.swing.JFrame {
     private javax.swing.ButtonGroup GrupoDisponibilidad;
     private javax.swing.JButton boton_atras;
     private javax.swing.JButton boton_modificar;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField nuevo_nombre;
+    private javax.swing.JRadioButton radio_disponible;
+    private javax.swing.JRadioButton radio_noDisponible;
+    private javax.swing.JComboBox<String> tour_seleccionado;
     // End of variables declaration//GEN-END:variables
 }
