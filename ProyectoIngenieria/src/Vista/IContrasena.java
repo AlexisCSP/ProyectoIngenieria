@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import com.sun.glass.events.KeyEvent;
 import java.awt.event.ActionListener;
 
 /**
@@ -38,6 +39,12 @@ public class IContrasena extends javax.swing.JFrame {
         setTitle("Administrador");
 
         jLabel1.setText("Contraseña:");
+
+        jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordField1KeyPressed(evt);
+            }
+        });
 
         boton_atras.setText("Atras");
 
@@ -77,6 +84,10 @@ public class IContrasena extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
+
+    }//GEN-LAST:event_jPasswordField1KeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -114,6 +125,10 @@ public class IContrasena extends javax.swing.JFrame {
 
     public void addBotonAtrasListener(ActionListener listenForBotonAtras) {
         boton_atras.addActionListener(listenForBotonAtras);
+    }
+    
+    public void addEnterContraseña(ActionListener pressEnter){
+        jPasswordField1.addActionListener(pressEnter);
     }
 
     public void addBotonContinuarListener(ActionListener listenForBotonContinuar) {

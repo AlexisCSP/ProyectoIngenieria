@@ -282,6 +282,19 @@ public final class Ctrl_Patrimonio {
             }
         }    
     }
+    
+    class PresionarEnterListenerIC implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (contrasenaCorrecta()) {
+                ocultarIContrasena();
+                mostrarIOpciones();
+            } else {
+                // Alerta mala contrasena
+                contrasena.limpiar();
+            }
+        }
+    }
 
     class BotonAnadirListenerIO implements ActionListener {
         @Override
@@ -388,6 +401,7 @@ public final class Ctrl_Patrimonio {
         recorrer_tour.addBotonFinalizarListener(new BotonFinalizarListenerRT());
         recorrer_tour.addBotonContinuarListener(new BotonContinuarListenerRT());
         contrasena.addBotonAtrasListener(new BotonAtrasListenerIC());
+        contrasena.addEnterContraseña(new PresionarEnterListenerIC());
         contrasena.addBotonContinuarListener(new BotonContinuarListenerIC());
         opciones.addBotonAnadirListener(new BotonAnadirListenerIO());
         opciones.addBotonEliminarListener(new BotonEliminarListenerIO());
