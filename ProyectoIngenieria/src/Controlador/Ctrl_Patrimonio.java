@@ -116,13 +116,13 @@ public final class Ctrl_Patrimonio {
             String nombreArchivo;
             String nombreTourVirtual;
             String lecturaCJ;
-            int iCJ=0;
-            boolean existeElNombre=true;
+            int iCJ=0, jCJ=0;
             ArrayList<PuntoInteres> ListaPuntosInteresDeTour;
             ListaPuntosInteresDeTour = new ArrayList<>();
             nombreArchivo = agregar_tour.nombreDelArchivo();
             nombreTourVirtual = agregar_tour.nombreTourVirtual();
-           
+            
+            if (!conjunto_tours.nombreExiste(nombreTourVirtual)) {
             try (InputStream reCJ = new FileInputStream(new File(getClass().getClassLoader().getResource("data/" + nombreArchivo).getFile()));){
                 BufferedReader readCJ= new BufferedReader(new InputStreamReader(reCJ, "UTF-8"));
                 
@@ -173,6 +173,7 @@ public final class Ctrl_Patrimonio {
                 
             } catch (FileNotFoundException | UnsupportedEncodingException ex) {
                 Logger.getLogger(Ctrl_Patrimonio.class.getName()).log(Level.SEVERE, null, ex);
+            }
             }
     }
     
