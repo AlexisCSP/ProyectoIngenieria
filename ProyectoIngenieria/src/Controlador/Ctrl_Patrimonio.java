@@ -236,8 +236,10 @@ public final class Ctrl_Patrimonio {
     class BotonContinuarListenerST implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            if (numTours!=0) {
             ocultarISeleccionarTour();
             mostrarIRecorrer();
+            }
         }    
     }
 
