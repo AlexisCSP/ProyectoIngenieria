@@ -20,6 +20,11 @@ public abstract class Obra {
         AnoCreacion = parts[4];
         Ubicacion = parts[5];
         Descripcion = parts[6];
+        
+        if ("".equals(Descripcion)) {
+        } else {
+            Descripcion = " y consta de " + Descripcion;
+        }
     }
 
     Imagen getImagen() {
@@ -27,7 +32,7 @@ public abstract class Obra {
     }
 
     String ObtenerCaracteristicas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "La presente obra que se encuentra ubicada en " + Ubicacion + " fue creada por " + Autor + " en el año " + AnoCreacion + Descripcion + " . ";
     }
 
     String getNombre() {

@@ -502,6 +502,7 @@ public final class Ctrl_Patrimonio {
         recorrer_tour.setVisible(true);
         recorrer_tour.mostrarNombre(iterator.elemActual().getNombreObra());
         recorrer_tour.mostrarNombreTourActual(tourActual.getNombre());
+        recorrer_tour.mostrarCaracteristicas (iterator.elemActual().getCaracteristicasObra());
     }
     private void mostrarIRol() {
         rol.setVisible(true);
