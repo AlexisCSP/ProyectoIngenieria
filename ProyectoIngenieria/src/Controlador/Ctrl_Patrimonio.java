@@ -38,6 +38,8 @@ public final class Ctrl_Patrimonio {
     private ISeleccionarTour seleccionar_tour;
     private int numTours;
     private int totalPuntosCJ;
+    private TourVirtual tourActual;
+    private Indice iterator;
     // Modelos
     private ConjTourVirtuales conjunto_tours;
     private ConjPuntosInteres conjunto_puntos;
@@ -237,8 +239,17 @@ public final class Ctrl_Patrimonio {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (numTours!=0) {
+                
+                int lecturaCJ;
+                lecturaCJ=seleccionar_tour.saberSeleccionCJ ();
+                tourActual = conjunto_tours.Tour(lecturaCJ);
+                iterator = tourActual.createIterator();
+                
+                
             ocultarISeleccionarTour();
             mostrarIRecorrer();
+            
+                iterator.prox();
             }
         }    
     }
@@ -254,7 +265,15 @@ public final class Ctrl_Patrimonio {
     class BotonContinuarListenerRT implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            // Implementar logica de busqueda siguiente punto
+            
+            if (iterator.end()) {
+                ocultarIRecorrer();
+                mostrarIRol();
+            }else{
+            mostrarIRecorrer();
+            iterator.prox();
+            }
+            
         }    
     }
     
@@ -481,6 +500,8 @@ public final class Ctrl_Patrimonio {
     }
     private void mostrarIRecorrer() {
         recorrer_tour.setVisible(true);
+        recorrer_tour.mostrarNombre(iterator.elemActual().getNombreObra());
+        recorrer_tour.mostrarNombreTourActual(tourActual.getNombre());
     }
     private void mostrarIRol() {
         rol.setVisible(true);

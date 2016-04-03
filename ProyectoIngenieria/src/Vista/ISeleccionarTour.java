@@ -147,6 +147,10 @@ public class ISeleccionarTour extends javax.swing.JFrame {
         return jComboBox1;
     }
     
+    public int saberSeleccionCJ () {
+        return jComboBox1.getSelectedIndex();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_atras;
     private javax.swing.JButton boton_continuar;

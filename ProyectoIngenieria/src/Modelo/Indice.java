@@ -9,6 +9,15 @@ package Modelo;
  *
  * @author alexis
  */
-public class Indice {
+public abstract class Indice {
+    
+    public Indice () {
+    
+    }
+    
+    public abstract void inicializar ();
+    public abstract void prox ();
+    public abstract boolean end ();
+    public abstract PuntoInteres elemActual (); 
     
 }

@@ -18,7 +18,7 @@ public class TourVirtual {
     private String Nombre;
     private boolean Disponibilidad;
     private ArrayList<PuntoInteres> ListaPuntosInteres;
-    private IndiceConcreto iterador;
+    private Indice iterador;
 
     public TourVirtual() {
         ++cantTours;
@@ -80,7 +80,7 @@ public class TourVirtual {
         }
     }
     
-    public IndiceConcreto createIterator() {
-        return iterador;
+    public Indice createIterator() {
+        return iterador = new IndiceConcreto (ListaPuntosInteres, ListaPuntosInteres.size());
     }
 }
