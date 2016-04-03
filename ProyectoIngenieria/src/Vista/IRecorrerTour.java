@@ -178,6 +178,16 @@ public void addBotonContinuarListener(ActionListener listenForBotonContinuar) {
     boton_continuar.addActionListener(listenForBotonContinuar);
 }
 
+public void mostrarNombre (String nombreCJ) {
+    jTextField2.setText(nombreCJ);
+    
+}
+
+public void mostrarNombreTourActual (String IDCJ){
+    jTextField1.setText(IDCJ);
+    
+}
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_continuar;
     private javax.swing.JButton boton_finalizar;
