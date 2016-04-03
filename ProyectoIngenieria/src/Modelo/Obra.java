@@ -23,7 +23,7 @@ public abstract class Obra {
         
         if ("".equals(Descripcion)) {
         } else {
-            Descripcion = " y consta de " + Descripcion;
+            Descripcion = "\nConsta de " + Descripcion;
         }
     }
 
@@ -32,7 +32,7 @@ public abstract class Obra {
     }
 
     String ObtenerCaracteristicas() {
-        return "La presente obra que se encuentra ubicada en " + Ubicacion + " fue creada por " + Autor + " en el año " + AnoCreacion + Descripcion + " . ";
+        return "La presente obra que se encuentra ubicada en " + Ubicacion + "\nFue creada por " + Autor + " en el año " + AnoCreacion + Descripcion + " . ";
     }
 
     String getNombre() {

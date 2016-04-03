@@ -54,6 +54,8 @@ public final class Ctrl_Patrimonio {
         centrarVistas();
         addListeners();
         agregarPuntosInteres();
+        agregarTourCJ("t1_PI.txt","Áreas de las Facultades de Odontología, Farmacia y Ciencias");       //Agregando Los dos primeros tours
+        agregarTourCJ("t2_PI.txt","Centro Directivo Cultural");
         mostrarIRol();
     }
     
@@ -112,73 +114,54 @@ public final class Ctrl_Patrimonio {
         }
     }
     
-    
-    private void agregarTourCJ() throws UnsupportedEncodingException, IOException {
-         
-            String nombreArchivo;
-            String nombreTourVirtual;
+    private void agregarTourCJ(String nombreArchivo ,String nombreTourVirtual) throws UnsupportedEncodingException, IOException {
             String lecturaCJ;
-            int iCJ=0, jCJ=0;
+            int iCJ;
             ArrayList<PuntoInteres> ListaPuntosInteresDeTour;
             ListaPuntosInteresDeTour = new ArrayList<>();
-            nombreArchivo = agregar_tour.nombreDelArchivo();
-            nombreTourVirtual = agregar_tour.nombreTourVirtual();
-            
             if (!conjunto_tours.nombreExiste(nombreTourVirtual)) {
-            try (InputStream reCJ = new FileInputStream(new File(getClass().getClassLoader().getResource("data/" + nombreArchivo).getFile()));){
-                BufferedReader readCJ= new BufferedReader(new InputStreamReader(reCJ, "UTF-8"));
-                
-                if (numTours==0) {
-                conjunto_tours.addTourVirtual();
-                conjunto_tours.agregarNombre(numTours, nombreTourVirtual);
-                
-                while ((lecturaCJ = readCJ.readLine()) != null) {
-                String[] parts = lecturaCJ.split("#", -1);
-                lecturaCJ = parts[1];
-                iCJ=0;       
-                    while (iCJ<totalPuntosCJ && (lecturaCJ == null ? conjunto_puntos.IDActual(iCJ) != null : !lecturaCJ.equals(conjunto_puntos.IDActual(iCJ)))) {
-                        iCJ++;
+                try (InputStream reCJ = new FileInputStream(new File(getClass().getClassLoader().getResource("data/" + nombreArchivo).getFile()));){
+                    BufferedReader readCJ= new BufferedReader(new InputStreamReader(reCJ, "UTF-8"));
+                    if (numTours==0) {
+                        conjunto_tours.addTourVirtual();
+                        conjunto_tours.agregarNombre(numTours, nombreTourVirtual);
+                        while ((lecturaCJ = readCJ.readLine()) != null) {
+                            String[] parts = lecturaCJ.split("#", -1);
+                            lecturaCJ = parts[1];
+                            iCJ=0;       
+                                while (iCJ<totalPuntosCJ && (lecturaCJ == null ? conjunto_puntos.IDActual(iCJ) != null : !lecturaCJ.equals(conjunto_puntos.IDActual(iCJ)))) {
+                                    iCJ++;
+                                }
+                            if (iCJ<totalPuntosCJ){
+                                ListaPuntosInteresDeTour.add(conjunto_puntos.getPuntoActual(iCJ));
+                            }
+                        }
+                        conjunto_tours.guardarPuntosInteresTour(numTours , ListaPuntosInteresDeTour);
+                    }else{
+                        conjunto_tours.addTourVirtual();
+                        conjunto_tours.agregarNombre(numTours, nombreTourVirtual);
+                        while ((lecturaCJ = readCJ.readLine()) != null) {
+                            String[] parts = lecturaCJ.split("#", -1);
+                            lecturaCJ = parts[1];
+                            iCJ=0;       
+                                while (iCJ<totalPuntosCJ && (lecturaCJ == null ? conjunto_puntos.IDActual(iCJ) != null : !lecturaCJ.equals(conjunto_puntos.IDActual(iCJ)))) {
+                                    iCJ++;
+                                }
+
+                            if (iCJ<totalPuntosCJ){
+                              ListaPuntosInteresDeTour.add(conjunto_puntos.getPuntoActual(iCJ));
+                            }
+                        }
+                        conjunto_tours.guardarPuntosInteresTour(numTours , ListaPuntosInteresDeTour);
                     }
-                    
-                if (iCJ<totalPuntosCJ){
-                ListaPuntosInteresDeTour.add(conjunto_puntos.getPuntoActual(iCJ));
-                
-                
+                    numTours++;
+
+                } catch (FileNotFoundException | UnsupportedEncodingException ex) {
+                    Logger.getLogger(Ctrl_Patrimonio.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                }
-                
-                conjunto_tours.guardarPuntosInteresTour(numTours , ListaPuntosInteresDeTour);
-                
-                }else{
-                conjunto_tours.addTourVirtual();
-                conjunto_tours.agregarNombre(numTours, nombreTourVirtual);
-                
-                while ((lecturaCJ = readCJ.readLine()) != null) {
-                String[] parts = lecturaCJ.split("#", -1);
-                lecturaCJ = parts[1];
-                iCJ=0;       
-                    while (iCJ<totalPuntosCJ && (lecturaCJ == null ? conjunto_puntos.IDActual(iCJ) != null : !lecturaCJ.equals(conjunto_puntos.IDActual(iCJ)))) {
-                        iCJ++;
-                    }
-                    
-                if (iCJ<totalPuntosCJ){
-                ListaPuntosInteresDeTour.add(conjunto_puntos.getPuntoActual(iCJ));
-                
-                
-                }
-                }
-                
-                conjunto_tours.guardarPuntosInteresTour(numTours , ListaPuntosInteresDeTour);
-                
-                }
-                numTours++;
-                
-            } catch (FileNotFoundException | UnsupportedEncodingException ex) {
-                Logger.getLogger(Ctrl_Patrimonio.class.getName()).log(Level.SEVERE, null, ex);
-            }
             }
     }
-    
+ 
     public ArrayList<TourVirtual> getToursDisponibles() {
         ArrayList<TourVirtual> toursDisponibles = new ArrayList<>();
         ArrayList<TourVirtual> tours = conjunto_tours.getListaToursVirtuales();
@@ -389,7 +372,7 @@ public final class Ctrl_Patrimonio {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                agregarTourCJ();
+                agregarTourCJ(agregar_tour.nombreDelArchivo(),agregar_tour.nombreTourVirtual());
             } catch (IOException ex) {
                 Logger.getLogger(Ctrl_Patrimonio.class.getName()).log(Level.SEVERE, null, ex);
             }
