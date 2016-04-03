@@ -483,6 +483,7 @@ public final class Ctrl_Patrimonio {
     }
     private void mostrarIRecorrer() {
         recorrer_tour.setVisible(true);
+        recorrer_tour.setBarraProgreso(iterator.getIndex(),iterator.getTamano());      //Para mostrar la cantidad de tours recorridos
         recorrer_tour.mostrarNombre(iterator.elemActual().getNombreObra());
         recorrer_tour.mostrarNombreTourActual(tourActual.getNombre());
         recorrer_tour.mostrarCaracteristicas (iterator.elemActual().getCaracteristicasObra());

@@ -34,6 +34,16 @@ public class IndiceConcreto extends Indice {
     public void inicializar() {
         act=0;
     }
+    
+    @Override
+    public int getTamano(){
+        return index;
+    }
+    
+    @Override
+    public int getIndex(){
+        return act;
+    }
 
     @Override
     public void prox() {

@@ -18,6 +18,7 @@ public abstract class Indice {
     public abstract void inicializar ();
     public abstract void prox ();
     public abstract boolean end ();
-    public abstract PuntoInteres elemActual (); 
-    
+    public abstract PuntoInteres elemActual ();
+    public abstract int getTamano();
+    public abstract int getIndex();
 }
