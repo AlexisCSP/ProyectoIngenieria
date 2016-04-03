@@ -20,7 +20,7 @@ public abstract class Obra {
         AnoCreacion = parts[4];
         Ubicacion = parts[5];
         Descripcion = parts[6];
-        
+        Image = new Imagen(Numero);
         if ("".equals(Descripcion)) {
         } else {
             Descripcion = "\nConsta de " + Descripcion;
@@ -28,7 +28,7 @@ public abstract class Obra {
     }
 
     Imagen getImagen() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Image;
     }
 
     String ObtenerCaracteristicas() {
@@ -41,6 +41,10 @@ public abstract class Obra {
     
     public String getID () {
         return ID;
+    }
+    
+    public String getNumero() {
+        return Numero;
     }
     
     protected String Numero;

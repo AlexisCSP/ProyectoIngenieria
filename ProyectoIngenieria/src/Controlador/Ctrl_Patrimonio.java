@@ -20,7 +20,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -231,8 +230,7 @@ public final class Ctrl_Patrimonio {
                 
             ocultarISeleccionarTour();
             mostrarIRecorrer();
-            
-                iterator.prox();
+            iterator.prox();
             }
         }    
     }
@@ -253,8 +251,8 @@ public final class Ctrl_Patrimonio {
                 ocultarIRecorrer();
                 mostrarIRol();
             }else{
-            mostrarIRecorrer();
-            iterator.prox();
+                mostrarIRecorrer();
+                iterator.prox();
             }
             
         }    
@@ -482,11 +480,13 @@ public final class Ctrl_Patrimonio {
         opciones.setVisible(true);
     }
     private void mostrarIRecorrer() {
-        recorrer_tour.setVisible(true);
         recorrer_tour.setBarraProgreso(iterator.getIndex(),iterator.getTamano());      //Para mostrar la cantidad de tours recorridos
         recorrer_tour.mostrarNombre(iterator.elemActual().getNombreObra());
         recorrer_tour.mostrarNombreTourActual(tourActual.getNombre());
         recorrer_tour.mostrarCaracteristicas (iterator.elemActual().getCaracteristicasObra());
+        recorrer_tour.mostrarImagen(iterator.elemActual().getImagenObra().getRutaIMG());
+        recorrer_tour.pack();
+        recorrer_tour.setVisible(true);
     }
     private void mostrarIRol() {
         rol.setVisible(true);

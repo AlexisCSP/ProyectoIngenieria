@@ -11,9 +11,15 @@ package Modelo;
  */
 public class Imagen {
     private String RutaIMG;
+    
+    public Imagen(String ruta) {
+        RutaIMG = "data/" + ruta + ".jpg";
+    }
+    
     public String getRutaIMG() {
         return RutaIMG;
     }
+    
     public void setRutaIMG(String rutimg) {
         RutaIMG = rutimg;
     }
