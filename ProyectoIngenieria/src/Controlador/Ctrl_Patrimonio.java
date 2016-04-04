@@ -505,10 +505,12 @@ public final class Ctrl_Patrimonio {
     private void mostrarIContrasena() {
         contrasena.setVisible(true);
     }
+    @SuppressWarnings("unchecked")
     private void mostrarIEliminarTour() {
         eliminar_tour.getComboBox().setModel(new DefaultComboBoxModel(conjunto_tours.getListaToursVirtuales().toArray()));
         eliminar_tour.setVisible(true);
     }
+    @SuppressWarnings("unchecked")
     private void mostrarIModificarTour() {
         modificar_tour.getComboBox().setModel(new DefaultComboBoxModel(conjunto_tours.getListaToursVirtuales().toArray()));
         String nombreTour = String.valueOf(modificar_tour.getComboBox().getSelectedItem());
@@ -533,6 +535,7 @@ public final class Ctrl_Patrimonio {
     private void mostrarIRol() {
         rol.setVisible(true);
     }
+    @SuppressWarnings("unchecked")
     private void mostrarISeleccionarTour() {
         seleccionar_tour.getComboBox().setModel(new DefaultComboBoxModel(getToursDisponibles().toArray()));
         seleccionar_tour.setVisible(true);
