@@ -266,6 +266,7 @@ public final class Ctrl_Patrimonio {
     class BotonContinuarListenerRT implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            AcabarTimer();
             if (iterator.end()) {
                 ocultarIRecorrer();
                 mostrarIRol();
