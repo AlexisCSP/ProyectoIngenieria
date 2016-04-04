@@ -20,6 +20,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -39,6 +41,7 @@ public final class Ctrl_Patrimonio {
     private int totalPuntosCJ;
     private TourVirtual tourActual;
     private Indice iterator;
+    private Timer Cronometro;
     // Modelos
     private ConjTourVirtuales conjunto_tours;
     private ConjPuntosInteres conjunto_puntos;
@@ -71,6 +74,22 @@ public final class Ctrl_Patrimonio {
             ioe.printStackTrace();
         }
         
+    }
+    
+    private void SetTimer(int segundos){
+        Cronometro = new Timer();
+        Cronometro.schedule(new SeAcabo(), segundos*1000);
+    }
+    
+    private void AcabarTimer(){
+        Cronometro.cancel();
+    }
+    
+    class SeAcabo extends TimerTask {
+        public void run() {
+          Cronometro.cancel(); //Not necessary because we call System.exit
+          SiguienteObra(); //Stops the AWT thread (and everything else)
+        }
     }
     
     private void modificarTour(){
@@ -238,6 +257,7 @@ public final class Ctrl_Patrimonio {
     class BotonFinalizarListenerRT implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            AcabarTimer();
             ocultarIRecorrer();
             mostrarIRol();
         }  
@@ -246,7 +266,6 @@ public final class Ctrl_Patrimonio {
     class BotonContinuarListenerRT implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            
             if (iterator.end()) {
                 ocultarIRecorrer();
                 mostrarIRol();
@@ -254,8 +273,17 @@ public final class Ctrl_Patrimonio {
                 mostrarIRecorrer();
                 iterator.prox();
             }
-            
         }    
+    }
+    
+    public void SiguienteObra(){
+        if (iterator.end()) {
+            ocultarIRecorrer();
+            mostrarIRol();
+        }else{
+            mostrarIRecorrer();
+            iterator.prox();
+        }
     }
     
     class BotonOkListenerIA implements ActionListener {
@@ -480,6 +508,7 @@ public final class Ctrl_Patrimonio {
         opciones.setVisible(true);
     }
     private void mostrarIRecorrer() {
+        SetTimer(5);
         recorrer_tour.setBarraProgreso(iterator.getIndex(),iterator.getTamano());      //Para mostrar la cantidad de tours recorridos
         recorrer_tour.mostrarNombre(iterator.elemActual().getNombreObra());
         recorrer_tour.mostrarNombreTourActual(tourActual.getNombre());
