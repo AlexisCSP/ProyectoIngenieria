@@ -193,6 +193,18 @@ public final class Ctrl_Patrimonio {
         return toursDisponibles;
     }
     
+    public int getCantToursDisponibles() {
+        int size = conjunto_tours.getListaToursVirtuales().size();
+        int cantidad = 0;
+        for (int i = 0; i < size; ++i) {
+            
+            if (conjunto_tours.getListaToursVirtuales().get(i).getDisponibilidad() == true) {
+                cantidad++;
+            }
+        }
+        return cantidad;
+    }
+    
     public boolean contrasenaCorrecta() {
         return "12345678".equals(new String(contrasena.getPassword()));
     }
@@ -239,17 +251,17 @@ public final class Ctrl_Patrimonio {
     class BotonContinuarListenerST implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (numTours!=0) {
-                
+            if (getCantToursDisponibles() > 0) {
                 int lecturaCJ;
                 lecturaCJ=seleccionar_tour.saberSeleccionCJ ();
                 tourActual = conjunto_tours.Tour(lecturaCJ);
                 iterator = tourActual.createIterator();
                 
                 
-            ocultarISeleccionarTour();
-            mostrarIRecorrer();
-            iterator.prox();
+                ocultarISeleccionarTour();
+                mostrarIRecorrer();
+                iterator.prox();
+            } else {
             }
         }    
     }
