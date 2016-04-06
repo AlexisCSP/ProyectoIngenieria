@@ -42,6 +42,9 @@ public final class Ctrl_Patrimonio {
     private TourVirtual tourActual;
     private Indice iterator;
     private Timer Cronometro;
+    private Timer Cronometro30s;
+    private Timer Cronometro20s;
+    private Timer Cronometro10s;
     // Modelos
     private ConjTourVirtuales conjunto_tours;
     private ConjPuntosInteres conjunto_puntos;
@@ -78,17 +81,51 @@ public final class Ctrl_Patrimonio {
     
     private void SetTimer(int segundos){
         Cronometro = new Timer();
+        Cronometro30s = new Timer();
+        Cronometro20s = new Timer();
+        Cronometro10s = new Timer();
+        
+        Cronometro30s.schedule(new Faltan30(),(segundos-30)*1000);
+        Cronometro20s.schedule(new Faltan20(),(segundos-20)*1000);
+        Cronometro10s.schedule(new Faltan10(),(segundos-10)*1000);
         Cronometro.schedule(new SeAcabo(), segundos*1000);
     }
     
     private void AcabarTimer(){
         Cronometro.cancel();
+        Cronometro30s.cancel();
+        Cronometro20s.cancel();
+        Cronometro10s.cancel();
     }
     
     class SeAcabo extends TimerTask {
         public void run() {
           Cronometro.cancel(); //Not necessary because we call System.exit
           SiguienteObra(); //Stops the AWT thread (and everything else)
+        }
+    }
+    
+    class Faltan30 extends TimerTask {
+        public void run() {
+          Cronometro30s.cancel(); //Not necessary because we call System.exit
+          alerta.ColocarAlerta("Le quedan 30 segundos.");
+          mostrarIAlerta(); //Stops the AWT thread (and everything else)
+        }
+    }
+    
+    class Faltan20 extends TimerTask {
+        public void run() {
+          Cronometro20s.cancel(); //Not necessary because we call System.exit
+          alerta.ColocarAlerta("Le quedan 20 segundos.");
+          mostrarIAlerta(); //Stops the AWT thread (and everything else)
+        }
+    }
+    
+    class Faltan10 extends TimerTask {
+        public void run() {
+          Cronometro10s.cancel(); //Not necessary because we call System.exit
+          alerta.ColocarAlerta("Le quedan 10 segundos.");
+          mostrarIAlerta(); //Stops the AWT thread (and everything else)
         }
     }
     
@@ -523,7 +560,7 @@ public final class Ctrl_Patrimonio {
         opciones.setVisible(true);
     }
     private void mostrarIRecorrer() {
-        SetTimer(5);
+        SetTimer(40);
         recorrer_tour.setBarraProgreso(iterator.getIndex(),iterator.getTamano());      //Para mostrar la cantidad de tours recorridos
         recorrer_tour.mostrarNombre(iterator.elemActual().getNombreObra());
         recorrer_tour.mostrarNombreTourActual(tourActual.getNombre());
