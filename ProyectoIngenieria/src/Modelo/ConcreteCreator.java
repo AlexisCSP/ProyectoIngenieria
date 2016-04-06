@@ -9,6 +9,13 @@ package Modelo;
  *
  * @author alexis
  */
-public class ConcreteCreator {
-    
+public class ConcreteCreator extends Creator {
+    public Obra factoryMethod(String[] datos) {
+        String tipo = datos[1];
+        if (tipo.startsWith("O")) {
+            return new ObraDeArte(datos);
+        } else {
+            return new Arquitectura(datos);
+        }
+    }
 }

@@ -12,8 +12,8 @@ public class ConjPuntosInteres {
     public ConjPuntosInteres() {
         ListaPuntosInteres = new ArrayList<>();
     }
-    public void addPuntoInteres(String datos) {
-        ListaPuntosInteres.add(new PuntoInteres(datos));
+    public void addPuntoInteres(Obra obra) {
+        ListaPuntosInteres.add(new PuntoInteres(obra));
     }
     public String IDActual (int iCJ) {
         return ListaPuntosInteres.get(iCJ).getIDObra();

@@ -12,7 +12,8 @@ package Modelo;
 public class ObraDeArte extends Obra {
     public int Paneles;
 
-    public ObraDeArte(String datos) {
+    
+    public ObraDeArte(String[] datos) {
         super(datos);
         // Logica para el resto
     }

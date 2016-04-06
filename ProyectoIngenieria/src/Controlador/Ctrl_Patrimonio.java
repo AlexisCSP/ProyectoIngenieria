@@ -45,6 +45,7 @@ public final class Ctrl_Patrimonio {
     private Timer Cronometro30s;
     private Timer Cronometro20s;
     private Timer Cronometro10s;
+    private Creator obraCreator;
     // Modelos
     private ConjTourVirtuales conjunto_tours;
     private ConjPuntosInteres conjunto_puntos;
@@ -55,6 +56,7 @@ public final class Ctrl_Patrimonio {
         totalPuntosCJ=0;
         conjunto_tours = new ConjTourVirtuales ();
         conjunto_puntos = new ConjPuntosInteres();
+        obraCreator = new ConcreteCreator();
         instanciarVistas();
         centrarVistas();
         addListeners();
@@ -69,8 +71,9 @@ public final class Ctrl_Patrimonio {
             BufferedReader br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
             String datos;
             while ((datos = br.readLine()) != null) {
-                System.out.println(datos);
-                conjunto_puntos.addPuntoInteres(datos);
+                String[] parts = datos.split("#", -1);
+                Obra ob = obraCreator.factoryMethod(parts);
+                conjunto_puntos.addPuntoInteres(ob);
                 totalPuntosCJ++;
             }
         } catch (IOException ioe) {
@@ -99,6 +102,7 @@ public final class Ctrl_Patrimonio {
     }
     
     class SeAcabo extends TimerTask {
+        @Override
         public void run() {
           Cronometro.cancel(); //Not necessary because we call System.exit
           SiguienteObra(); //Stops the AWT thread (and everything else)
@@ -106,6 +110,7 @@ public final class Ctrl_Patrimonio {
     }
     
     class Faltan30 extends TimerTask {
+        @Override
         public void run() {
           Cronometro30s.cancel(); //Not necessary because we call System.exit
           alerta.ColocarAlerta("Le quedan 30 segundos.");
@@ -114,6 +119,7 @@ public final class Ctrl_Patrimonio {
     }
     
     class Faltan20 extends TimerTask {
+        @Override
         public void run() {
           Cronometro20s.cancel(); //Not necessary because we call System.exit
           alerta.ColocarAlerta("Le quedan 20 segundos.");
@@ -122,6 +128,7 @@ public final class Ctrl_Patrimonio {
     }
     
     class Faltan10 extends TimerTask {
+        @Override
         public void run() {
           Cronometro10s.cancel(); //Not necessary because we call System.exit
           alerta.ColocarAlerta("Le quedan 10 segundos.");
@@ -146,11 +153,14 @@ public final class Ctrl_Patrimonio {
                     } else {
                         conjunto_tours.Tour(contador).setNombre(nuevoNombre);
                     } 
-                }else{
-                System.out.println("Error");               //ACA DEBERIAMOS MOSTRAR UNA PESTAÑA DE ERROR
+                } else {
+                    alerta.ColocarAlerta("Tour no Existente");
                 }
+            } else {
+                alerta.ColocarAlerta("Nombre del Tour ya existe");
             }
         }
+        alerta.ColocarAlerta("Tour Modificado Exitosamente");
     }
     
     private void eliminarTour(){
@@ -166,7 +176,10 @@ public final class Ctrl_Patrimonio {
                 numTours = numTours - 1;
                 TourVirtual.decCantTours();
             }
+        } else {
+            alerta.ColocarAlerta("No hay Tours para Eliminar");
         }
+        alerta.ColocarAlerta("Tour Eliminado Exitosamente");
     }
     
     private void agregarTourCJ(String nombreArchivo ,String nombreTourVirtual) throws UnsupportedEncodingException, IOException {
@@ -215,6 +228,7 @@ public final class Ctrl_Patrimonio {
                     Logger.getLogger(Ctrl_Patrimonio.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+        alerta.ColocarAlerta("Tour Agregado Exitosamente");
     }
  
     public ArrayList<TourVirtual> getToursDisponibles() {
@@ -358,7 +372,8 @@ public final class Ctrl_Patrimonio {
                 ocultarIContrasena();
                 mostrarIOpciones();
             } else {
-                // Alerta mala contrasena
+                alerta.ColocarAlerta("Contraseña Incorrecta");
+                mostrarIAlerta();
                 contrasena.limpiar();
             }
         }    
@@ -371,7 +386,8 @@ public final class Ctrl_Patrimonio {
                 ocultarIContrasena();
                 mostrarIOpciones();
             } else {
-                // Alerta mala contrasena
+                alerta.ColocarAlerta("Contraseña Incorrecta");
+                mostrarIAlerta();
                 contrasena.limpiar();
             }
         }
@@ -423,6 +439,7 @@ public final class Ctrl_Patrimonio {
             modificarTour();
             ocultarIModificarTour();
             mostrarIOpciones();
+            mostrarIAlerta();
         }    
     }
     
@@ -454,6 +471,7 @@ public final class Ctrl_Patrimonio {
             }
             ocultarIAgregarTour();
             mostrarIOpciones(); 
+            mostrarIAlerta();
         }    
     }
     
@@ -471,6 +489,7 @@ public final class Ctrl_Patrimonio {
             eliminarTour();
             ocultarIEliminarTour();
             mostrarIOpciones();
+            mostrarIAlerta();
         }    
     }
     
@@ -537,6 +556,8 @@ public final class Ctrl_Patrimonio {
         agregar_tour.setVisible(true);
     }
     private void mostrarIAlerta() {
+        alerta.getRootPane().setDefaultButton(alerta.getBotonOk());
+        alerta.getBotonOk().requestFocus();
         alerta.setVisible(true);
     }
     private void mostrarIContrasena() {

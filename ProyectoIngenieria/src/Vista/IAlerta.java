@@ -7,10 +7,6 @@ package Vista;
 
 import java.awt.event.ActionListener;
 
-/**
- *
- * @author alexis
- */
 public class IAlerta extends javax.swing.JFrame {
 
     /**
@@ -40,8 +36,16 @@ public class IAlerta extends javax.swing.JFrame {
         jLabel1.setText("Recordatorio");
 
         boton_ok.setText("OK");
+        boton_ok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                boton_okKeyPressed(evt);
+            }
+        });
 
         jTextField2.setEditable(false);
+        jTextField2.setBackground(new java.awt.Color(238, 238, 238));
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField2.setBorder(null);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -53,29 +57,31 @@ public class IAlerta extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(boton_ok)
-                            .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextField2)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 67, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(boton_ok)
+                                .addGap(27, 27, 27))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addGap(64, 64, 64)))))
-                .addContainerGap(33, Short.MAX_VALUE))
+                                .addGap(65, 65, 65))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(boton_ok)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -84,6 +90,12 @@ public class IAlerta extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void boton_okKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boton_okKeyPressed
+        if (evt.getKeyCode()== java.awt.event.KeyEvent.VK_ENTER){
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_boton_okKeyPressed
 
     public void ColocarAlerta(String frase){
         jTextField2.setText(frase);
@@ -123,6 +135,10 @@ public class IAlerta extends javax.swing.JFrame {
             }
         });
     }
+    
+ public javax.swing.JButton getBotonOk() {
+     return boton_ok;
+ }
     
  public void addBotonOKListener(ActionListener listenForBotonOK) {
     boton_ok.addActionListener(listenForBotonOK);

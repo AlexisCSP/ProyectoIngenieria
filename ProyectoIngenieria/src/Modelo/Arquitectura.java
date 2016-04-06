@@ -11,7 +11,7 @@ package Modelo;
  */
 public class Arquitectura extends Obra {
     
-    public Arquitectura(String datos) {
+    public Arquitectura(String[] datos) {
         super(datos);
     }
     

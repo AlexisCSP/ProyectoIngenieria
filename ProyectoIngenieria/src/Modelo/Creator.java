@@ -10,5 +10,7 @@ package Modelo;
  * @author alexis
  */
 public class Creator {
-    
+    public Obra factoryMethod(String[] datos) {
+        return null;
+    }
 }

@@ -5,7 +5,6 @@
  */
 package Vista;
 
-import java.awt.Image;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 /**
@@ -207,12 +206,7 @@ public void mostrarCaracteristicas (String mostrarCJ) {
 
 public void mostrarImagen(String rutaIMG) {
     ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource(rutaIMG));
-    //Image image = icon.getImage().getScaledInstance(jLabel3.getWidth(), jLabel3.getHeight(), Image.SCALE_FAST);
     jLabel3.setIcon(icon);
-}
-
-public void limpiar() {
-    
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -11,8 +11,7 @@ package Modelo;
  */
 public abstract class Obra {
     
-    public Obra(String datos) {
-        String[] parts = datos.split("#", -1);
+    public Obra(String[] parts) {
         Numero = parts[0];
         ID = parts[1];
         Autor = parts[2];

@@ -12,8 +12,8 @@ package Modelo;
 public class PuntoInteres {
     private Obra ob;
     
-    public PuntoInteres(String datos) {
-        ob = new ObraDeArte(datos);
+    public PuntoInteres(Obra o) {
+        ob = o;
     }
     
     public Imagen getImagenObra() {
