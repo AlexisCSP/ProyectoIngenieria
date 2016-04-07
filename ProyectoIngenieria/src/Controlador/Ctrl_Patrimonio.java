@@ -152,15 +152,18 @@ public final class Ctrl_Patrimonio {
                     if ("".equals(nuevoNombre)) {
                     } else {
                         conjunto_tours.Tour(contador).setNombre(nuevoNombre);
+                        alerta.ColocarAlerta("Tour Modificado Exitosamente");
                     } 
                 } else {
-                    alerta.ColocarAlerta("Tour no Existente");
+                    alerta.ColocarAlerta("Tour No Existente");
                 }
             } else {
-                alerta.ColocarAlerta("Nombre del Tour ya existe");
+                alerta.ColocarAlerta("Nombre Del Tour Ya Existe");
             }
+        }else{
+            alerta.ColocarAlerta("No Hay Tour Para Modificar");
         }
-        alerta.ColocarAlerta("Tour Modificado Exitosamente");
+        
     }
     
     private void eliminarTour(){
@@ -176,10 +179,11 @@ public final class Ctrl_Patrimonio {
                 numTours = numTours - 1;
                 TourVirtual.decCantTours();
             }
+            alerta.ColocarAlerta("Tour Eliminado Exitosamente");
         } else {
             alerta.ColocarAlerta("No hay Tours para Eliminar");
         }
-        alerta.ColocarAlerta("Tour Eliminado Exitosamente");
+        
     }
     
     private void agregarTourCJ(String nombreArchivo ,String nombreTourVirtual) throws UnsupportedEncodingException, IOException {
@@ -223,12 +227,14 @@ public final class Ctrl_Patrimonio {
                         conjunto_tours.guardarPuntosInteresTour(numTours , ListaPuntosInteresDeTour);
                     }
                     numTours++;
+                    alerta.ColocarAlerta("Tour Agregado Exitosamente");
 
                 } catch (FileNotFoundException | UnsupportedEncodingException ex) {
+                    alerta.ColocarAlerta("Error Al Agregar Tour");
                     Logger.getLogger(Ctrl_Patrimonio.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        alerta.ColocarAlerta("Tour Agregado Exitosamente");
+        
     }
  
     public ArrayList<TourVirtual> getToursDisponibles() {
