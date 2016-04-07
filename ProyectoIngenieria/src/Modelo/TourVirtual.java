@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class TourVirtual {
 
     private static int cantTours;
+    private static int numID;
     private int ID;
     private String Nombre;
     private boolean Disponibilidad;
@@ -22,7 +23,8 @@ public class TourVirtual {
 
     public TourVirtual() {
         ++cantTours;
-        ID = cantTours;
+        ++numID;
+        ID = numID;
         Disponibilidad = true;
         ListaPuntosInteres=new ArrayList<>();
     }
@@ -36,12 +38,17 @@ public class TourVirtual {
         return cantTours;
     }
     
+    public static int getNumeroID() {
+        return numID;
+    }
+    
     public static void decCantTours() {
-        cantTours=cantTours;
+        cantTours--;
     }
 
     public static void incCantTours() {
         cantTours++;
+        numID++;
     }
     public int getID() {
         return ID;
