@@ -37,7 +37,7 @@ public class TourVirtual {
     }
     
     public static void decCantTours() {
-        cantTours--;
+        cantTours=cantTours;
     }
 
     public static void incCantTours() {
