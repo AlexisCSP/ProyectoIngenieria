@@ -319,6 +319,8 @@ public final class Ctrl_Patrimonio {
                 mostrarIRecorrer();
                 iterator.prox();
             } else {
+          alerta.ColocarAlerta("No Hay Tour Para Recorrer");   
+          mostrarIAlerta();
             }
         }    
     }
@@ -558,7 +560,7 @@ public final class Ctrl_Patrimonio {
 
     private void mostrarIAgregarTour() {
         // determinar si llevarlo en ctrl o en la clase tour virtual
-        agregar_tour.getLabelID().setText(Integer.toString(TourVirtual.getCantTours()));
+        agregar_tour.getLabelID().setText(Integer.toString(TourVirtual.getNumeroID()));
         agregar_tour.setVisible(true);
     }
     private void mostrarIAlerta() {
