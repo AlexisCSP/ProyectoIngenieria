@@ -59,6 +59,7 @@ public final class Ctrl_Patrimonio {
         obraCreator = new ConcreteCreator();
         instanciarVistas();
         centrarVistas();
+        // Agrega los escuchadores de los eventos de las interfaces
         addListeners();
         agregarPuntosInteres();
         //Agregando Los dos primeros tours
@@ -68,17 +69,19 @@ public final class Ctrl_Patrimonio {
     }
     
     private void agregarPuntosInteres() throws UnsupportedEncodingException, IOException {
+        // Intenta abrir el archivo que contiene las obras
         try (InputStream in = new FileInputStream(new File(getClass().getClassLoader().getResource("data/obras.txt").getFile()));) {
             BufferedReader br = new BufferedReader(new InputStreamReader(in, "UTF-8"));
             String datos;
+            // Mientras no sea el final de archivo
             while ((datos = br.readLine()) != null) {
+                // Divide los datos de la obra en sus diferentes partes y los pone en un arreglo
                 String[] parts = datos.split("#", -1);
                 Obra ob = obraCreator.factoryMethod(parts);
                 conjunto_puntos.addPuntoInteres(ob);
                 totalPuntosCJ++;
             }
         } catch (IOException ioe) {
-            ioe.printStackTrace();
         }
         
     }
@@ -105,35 +108,35 @@ public final class Ctrl_Patrimonio {
     class SeAcabo extends TimerTask {
         @Override
         public void run() {
-          Cronometro.cancel(); //Not necessary because we call System.exit
-          SiguienteObra(); //Stops the AWT thread (and everything else)
+          Cronometro.cancel();
+          SiguienteObra();
         }
     }
     
     class Faltan30 extends TimerTask {
         @Override
         public void run() {
-          Cronometro30s.cancel(); //Not necessary because we call System.exit
+          Cronometro30s.cancel();
           alerta.ColocarAlerta("Le quedan 30 segundos.");
-          mostrarIAlerta(); //Stops the AWT thread (and everything else)
+          mostrarIAlerta();
         }
     }
     
     class Faltan20 extends TimerTask {
         @Override
         public void run() {
-          Cronometro20s.cancel(); //Not necessary because we call System.exit
+          Cronometro20s.cancel();
           alerta.ColocarAlerta("Le quedan 20 segundos.");
-          mostrarIAlerta(); //Stops the AWT thread (and everything else)
+          mostrarIAlerta();
         }
     }
     
     class Faltan10 extends TimerTask {
         @Override
         public void run() {
-          Cronometro10s.cancel(); //Not necessary because we call System.exit
+          Cronometro10s.cancel();
           alerta.ColocarAlerta("Le quedan 10 segundos.");
-          mostrarIAlerta(); //Stops the AWT thread (and everything else)
+          mostrarIAlerta();
         }
     }
     
@@ -145,9 +148,11 @@ public final class Ctrl_Patrimonio {
         boolean Repetido = conjunto_tours.nombreExiste(nuevoNombre);
         if(TourVirtual.getCantTours() > 0){
             if(Repetido == false){
+                // Mientras hayan tours en el conjunto de tours, buscar la posicion del tour con el mismo nombre
                 while((conjunto_tours.getnombre(contador) == null ? tourViejo != null : !conjunto_tours.getnombre(contador).equals(tourViejo)) && contador <=numTours){
                     contador++;
                 }
+                // Se modifica la disponibilidad y si no se coloca nombre nuevo se deja el anterior, sino se cambia por el nuevo
                 if(conjunto_tours.getnombre(contador) == null ? tourViejo == null : conjunto_tours.getnombre(contador).equals(tourViejo)){
                     conjunto_tours.Tour(contador).setDisponibilidad(disponibilidad);
                     if ("".equals(nuevoNombre)) {
@@ -171,6 +176,7 @@ public final class Ctrl_Patrimonio {
         nombreTour= eliminar_tour.tourSeleccionado();
         int contador=0;
         if (TourVirtual.getCantTours() > 0) {
+            // Mientras hayan tours en el conjunto de tours, buscar la posicion del tour con el mismo nombre
             while((conjunto_tours.getnombre(contador) == null ? nombreTour != null : !conjunto_tours.getnombre(contador).equals(nombreTour)) && contador <=numTours){
             contador++;
             }
@@ -192,6 +198,7 @@ public final class Ctrl_Patrimonio {
             ArrayList<PuntoInteres> ListaPuntosInteresDeTour;
             ListaPuntosInteresDeTour = new ArrayList<>();
             if (!conjunto_tours.nombreExiste(nombreTourVirtual)) {
+                // Se intenta abrir el archivo que contiene los puntos de interes
                 try (InputStream reCJ = new FileInputStream(new File(getClass().getClassLoader().getResource("data/" + nombreArchivo).getFile()));){
                     BufferedReader readCJ= new BufferedReader(new InputStreamReader(reCJ, "UTF-8"));
                     if (numTours==0) {
@@ -241,7 +248,6 @@ public final class Ctrl_Patrimonio {
         ArrayList<TourVirtual> tours = conjunto_tours.getListaToursVirtuales();
         
         for (int i = 0; i < tours.size(); ++i) {
-            
             if (tours.get(i).getDisponibilidad() == true) {
                 toursDisponibles.add(tours.get(i));
             }
@@ -253,7 +259,6 @@ public final class Ctrl_Patrimonio {
         int size = conjunto_tours.getListaToursVirtuales().size();
         int cantidad = 0;
         for (int i = 0; i < size; ++i) {
-            
             if (conjunto_tours.getListaToursVirtuales().get(i).getDisponibilidad() == true) {
                 cantidad++;
             }
@@ -267,9 +272,11 @@ public final class Ctrl_Patrimonio {
     
     public void setRadioButton(String nombreTour) {
        int contador=0;
+       // Mientras hayan tours en el conjunto de tours, buscar la posicion del tour con el mismo nombre
        while((conjunto_tours.getnombre(contador) == null ? nombreTour != null : !conjunto_tours.getnombre(contador).equals(nombreTour)) && contador <=numTours){
            contador++;
        }
+       // Coloca el radio buton con la disponibilidad actual del tour seleccionado
        if(conjunto_tours.getnombre(contador) == null ? nombreTour == null : conjunto_tours.getnombre(contador).equals(nombreTour)){
           boolean disponible = conjunto_tours.getDisponibilidad(contador);
           if (disponible) {
@@ -280,6 +287,7 @@ public final class Ctrl_Patrimonio {
        }
     }
     
+    // Escucha el boton Visitante en IRol y realiza la logica necesaria
     class BotonVisitanteListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -288,6 +296,7 @@ public final class Ctrl_Patrimonio {
         }     
     }
     
+   // Escucha el boton Administrador en IRol y realiza la logica necesaria
     class BotonAdministradorListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -296,6 +305,7 @@ public final class Ctrl_Patrimonio {
         }
     }
     
+   // Escucha el boton Atras en ISeleccionarTour y realiza la logica necesaria
     class BotonAtrasListenerST implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -303,7 +313,8 @@ public final class Ctrl_Patrimonio {
             mostrarIRol();
         }  
     }
-    
+
+   // Escucha el boton Continuar en ISeleccionarTour y realiza la logica necesaria    
     class BotonContinuarListenerST implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -324,6 +335,7 @@ public final class Ctrl_Patrimonio {
         }    
     }
 
+    // Escucha el boton Finalizar en IRecorrerTour y realiza la logica necesaria
     class BotonFinalizarListenerRT implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -333,6 +345,7 @@ public final class Ctrl_Patrimonio {
         }  
     }
     
+    // Escucha el boton Continuar en IRecorrerTour y realiza la logica necesaria
     class BotonContinuarListenerRT implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -357,6 +370,7 @@ public final class Ctrl_Patrimonio {
         }
     }
     
+    // Escucha el boton Ok en IAlerta y realiza la logica necesaria
     class BotonOkListenerIA implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -364,6 +378,7 @@ public final class Ctrl_Patrimonio {
         }    
     }
     
+    // Escucha el boton Atras en IContrasena y realiza la logica necesaria
     class BotonAtrasListenerIC implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -372,6 +387,7 @@ public final class Ctrl_Patrimonio {
         }  
     }
     
+    // Escucha el boton Continuar en IContrasena y realiza la logica necesaria
     class BotonContinuarListenerIC implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -386,6 +402,7 @@ public final class Ctrl_Patrimonio {
         }    
     }
     
+    // Escucha el si se presiona enter en IContrasena y realiza la logica necesaria
     class PresionarEnterListenerIC implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -400,6 +417,7 @@ public final class Ctrl_Patrimonio {
         }
     }
 
+    // Escucha el boton Añadir en IOpciones y realiza la logica necesaria
     class BotonAnadirListenerIO implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -408,6 +426,7 @@ public final class Ctrl_Patrimonio {
         }    
     }
     
+   // Escucha el boton Eliminar en IOpciones y realiza la logica necesaria
     class BotonEliminarListenerIO implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -415,7 +434,8 @@ public final class Ctrl_Patrimonio {
             mostrarIEliminarTour();
         }    
     }
-    
+
+    // Escucha el boton Modificar en IOpciones y realiza la logica necesaria    
     class BotonModificarListenerIO implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -423,7 +443,8 @@ public final class Ctrl_Patrimonio {
             mostrarIModificarTour();
         }  
     }
-    
+
+    // Escucha el boton Volver en IOpciones y realiza la logica necesaria
     class BotonVolverListenerIO implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -432,6 +453,7 @@ public final class Ctrl_Patrimonio {
         }    
     }
     
+    // Escucha el boton Atras en IModificarTour y realiza la logica necesaria
     class BotonAtrasListenerMT implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -439,7 +461,8 @@ public final class Ctrl_Patrimonio {
             mostrarIOpciones();
         }  
     }
-    
+
+    // Escucha el boton Modificar en IModificarTour y realiza la logica necesaria
     class BotonModificarListenerMT implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -450,6 +473,7 @@ public final class Ctrl_Patrimonio {
         }    
     }
     
+    // Escucha el ComboBox en IModificarTour para saber la seleccion y realiza la logica necesaria
     class ComboBoxListenerMT implements ItemListener {
         @Override
         public void itemStateChanged(ItemEvent e) {
@@ -460,6 +484,7 @@ public final class Ctrl_Patrimonio {
         }
     }
     
+    // Escucha el boton Atras en IAgregarTour y realiza la logica necesaria
     class BotonAtrasListenerAT implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -468,6 +493,7 @@ public final class Ctrl_Patrimonio {
         }  
     }
     
+    // Escucha el boton Añadir en IAgregarTour y realiza la logica necesaria
     class BotonAnadirListenerAT implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -482,6 +508,7 @@ public final class Ctrl_Patrimonio {
         }    
     }
     
+    // Escucha el boton Atras en IEliminarTour y realiza la logica necesaria
     class BotonAtrasListenerET implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -490,6 +517,7 @@ public final class Ctrl_Patrimonio {
         }  
     }
     
+    // Escucha el boton Eliminar en IEliminarTour y realiza la logica necesaria
     class BotonEliminarListenerET implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -500,6 +528,7 @@ public final class Ctrl_Patrimonio {
         }    
     }
     
+    // Agrega los diferentes listeners a los respectivos botones en las vistas
     private void addListeners() {
         rol.addBotonVisitanteListener(new BotonVisitanteListener());
         rol.addBotonAdministradorListener(new BotonAdministradorListener());
@@ -558,23 +587,26 @@ public final class Ctrl_Patrimonio {
     }
 
     private void mostrarIAgregarTour() {
-        // determinar si llevarlo en ctrl o en la clase tour virtual
         agregar_tour.getLabelID().setText(Integer.toString(TourVirtual.getNumeroID()));
         agregar_tour.setVisible(true);
     }
+    
     private void mostrarIAlerta() {
         alerta.getRootPane().setDefaultButton(alerta.getBotonOk());
         alerta.getBotonOk().requestFocus();
         alerta.setVisible(true);
     }
+    
     private void mostrarIContrasena() {
         contrasena.setVisible(true);
     }
+    
     @SuppressWarnings("unchecked")
     private void mostrarIEliminarTour() {
         eliminar_tour.getComboBox().setModel(new DefaultComboBoxModel(conjunto_tours.getListaToursVirtuales().toArray()));
         eliminar_tour.setVisible(true);
     }
+    
     @SuppressWarnings("unchecked")
     private void mostrarIModificarTour() {
         modificar_tour.getComboBox().setModel(new DefaultComboBoxModel(conjunto_tours.getListaToursVirtuales().toArray()));
@@ -584,9 +616,11 @@ public final class Ctrl_Patrimonio {
         }
         modificar_tour.setVisible(true);
     }
+    
     private void mostrarIOpciones() {
         opciones.setVisible(true);
     }
+    
     private void mostrarIRecorrer() {
         SetTimer(40);
         recorrer_tour.setBarraProgreso(iterator.getIndex(),iterator.getTamano());      //Para mostrar la cantidad de tours recorridos
@@ -597,9 +631,11 @@ public final class Ctrl_Patrimonio {
         recorrer_tour.pack();
         recorrer_tour.setVisible(true);
     }
+    
     private void mostrarIRol() {
         rol.setVisible(true);
     }
+    
     @SuppressWarnings("unchecked")
     private void mostrarISeleccionarTour() {
         seleccionar_tour.getComboBox().setModel(new DefaultComboBoxModel(getToursDisponibles().toArray()));
@@ -610,29 +646,37 @@ public final class Ctrl_Patrimonio {
         agregar_tour.setVisible(false);
         agregar_tour.limpiar();  
     }
+    
     private void ocultarIAlerta() {
         alerta.setVisible(false);
     }
+    
     private void ocultarIContrasena() {
         contrasena.setVisible(false);
         contrasena.limpiar();
     }
+    
     private void ocultarIEliminarTour() {
         eliminar_tour.setVisible(false);
     }
+    
     private void ocultarIModificarTour() {
         modificar_tour.setVisible(false);
         modificar_tour.limpiar();
     }
+    
     private void ocultarIOpciones() {
         opciones.setVisible(false);
     }
+    
     private void ocultarIRecorrer() {
         recorrer_tour.setVisible(false);
     }
+    
     private void ocultarIRol() {
         rol.setVisible(false);
     }
+    
     private void ocultarISeleccionarTour() {
         seleccionar_tour.setVisible(false);
     }
