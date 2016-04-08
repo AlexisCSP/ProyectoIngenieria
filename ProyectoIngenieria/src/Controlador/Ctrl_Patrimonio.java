@@ -158,16 +158,16 @@ public final class Ctrl_Patrimonio {
                     if ("".equals(nuevoNombre)) {
                     } else {
                         conjunto_tours.Tour(contador).setNombre(nuevoNombre);
-                        alerta.ColocarAlerta("Tour Modificado Exitosamente");
+                        alerta.ColocarAviso("Tour Modificado Exitosamente");
                     } 
                 } else {
-                    alerta.ColocarAlerta("Tour No Existente");
+                    alerta.ColocarAdvertencia("Tour No Existente");
                 }
             } else {
-                alerta.ColocarAlerta("Nombre Del Tour Ya Existe");
+                alerta.ColocarAdvertencia("Nombre Del Tour Ya Existe");
             }
         }else{
-            alerta.ColocarAlerta("No Hay Tour Para Modificar");
+            alerta.ColocarAdvertencia("No Hay Tour Para Modificar");
         }
     }
     
@@ -185,9 +185,9 @@ public final class Ctrl_Patrimonio {
                 numTours = numTours - 1;
                 TourVirtual.decCantTours();
             }
-            alerta.ColocarAlerta("Tour Eliminado Exitosamente");
+            alerta.ColocarAviso("Tour Eliminado Exitosamente");
         } else {
-            alerta.ColocarAlerta("No hay Tours para Eliminar");
+            alerta.ColocarAdvertencia("No hay Tours para Eliminar");
         }
         
     }
@@ -234,10 +234,10 @@ public final class Ctrl_Patrimonio {
                         conjunto_tours.guardarPuntosInteresTour(numTours , ListaPuntosInteresDeTour);
                     }
                     numTours++;
-                    alerta.ColocarAlerta("Tour Agregado Exitosamente");
+                    alerta.ColocarAviso("Tour Agregado Exitosamente");
 
                 } catch (NullPointerException | FileNotFoundException | UnsupportedEncodingException ex) {
-                    alerta.ColocarAlerta("Error Al Agregar Tour");
+                    alerta.ColocarAdvertencia("Error Al Agregar Tour");
                 }
             }
         
@@ -329,7 +329,7 @@ public final class Ctrl_Patrimonio {
                 mostrarIRecorrer();
                 iterator.prox();
             } else {
-          alerta.ColocarAlerta("No Hay Tour Para Recorrer");   
+          alerta.ColocarAdvertencia("Disculpe, no hay Tours disponibles");   
           mostrarIAlerta();
             }
         }    
@@ -395,7 +395,7 @@ public final class Ctrl_Patrimonio {
                 ocultarIContrasena();
                 mostrarIOpciones();
             } else {
-                alerta.ColocarAlerta("Contraseña Incorrecta");
+                alerta.ColocarAdvertencia("Contraseña Incorrecta");
                 mostrarIAlerta();
                 contrasena.limpiar();
             }
@@ -410,7 +410,7 @@ public final class Ctrl_Patrimonio {
                 ocultarIContrasena();
                 mostrarIOpciones();
             } else {
-                alerta.ColocarAlerta("Contraseña Incorrecta");
+                alerta.ColocarAdvertencia("Contraseña Incorrecta");
                 mostrarIAlerta();
                 contrasena.limpiar();
             }

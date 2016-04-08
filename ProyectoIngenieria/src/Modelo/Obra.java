@@ -32,9 +32,9 @@ public abstract class Obra {
 
     String ObtenerCaracteristicas() {
         if (ID.startsWith("O")) {
-            return "La presente obra de arte que se encuentra ubicada en " + Ubicacion + "\nFue creada por " + Autor + " en el año " + AnoCreacion + Descripcion + ". ";
+            return "La presente obra de arte se encuentra ubicada en " + Ubicacion + "\nFue creada por " + Autor + " en el año " + AnoCreacion + Descripcion + ". ";
         } else {
-            return "La presente arquitectura que se encuentra ubicada en " + Ubicacion + "\nFue creada por " + Autor + " en el año " + AnoCreacion + Descripcion + ". ";
+            return "La presente arquitectura se encuentra ubicada en " + Ubicacion + "\nFue creada por " + Autor + " en el año " + AnoCreacion + Descripcion + ". ";
         }
     }
 

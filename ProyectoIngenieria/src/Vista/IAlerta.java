@@ -98,6 +98,17 @@ public class IAlerta extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_okKeyPressed
 
     public void ColocarAlerta(String frase){
+        jLabel1.setText("Recordatorio");
+        jTextField2.setText(frase);
+    }
+    
+    public void ColocarAviso(String frase){
+        jLabel1.setText("");
+        jTextField2.setText(frase);
+    }
+    
+    public void ColocarAdvertencia(String frase){
+        jLabel1.setText("Advertencia");
         jTextField2.setText(frase);
     }
     
