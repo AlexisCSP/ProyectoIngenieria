@@ -229,7 +229,7 @@ public final class Ctrl_Patrimonio {
                     numTours++;
                     alerta.ColocarAlerta("Tour Agregado Exitosamente");
 
-                } catch (FileNotFoundException | UnsupportedEncodingException ex) {
+                } catch (NullPointerException | FileNotFoundException | UnsupportedEncodingException ex) {
                     alerta.ColocarAlerta("Error Al Agregar Tour");
                 }
             }
