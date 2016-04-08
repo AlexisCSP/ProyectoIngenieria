@@ -156,6 +156,7 @@ public final class Ctrl_Patrimonio {
                 if(conjunto_tours.getnombre(contador) == null ? tourViejo == null : conjunto_tours.getnombre(contador).equals(tourViejo)){
                     conjunto_tours.Tour(contador).setDisponibilidad(disponibilidad);
                     if ("".equals(nuevoNombre)) {
+                        alerta.ColocarAviso("Tour Modificado Exitosamente");
                     } else {
                         conjunto_tours.Tour(contador).setNombre(nuevoNombre);
                         alerta.ColocarAviso("Tour Modificado Exitosamente");
