@@ -61,7 +61,8 @@ public final class Ctrl_Patrimonio {
         centrarVistas();
         addListeners();
         agregarPuntosInteres();
-        agregarTourCJ("t1_PI.txt","Áreas de las Facultades de Odontología, Farmacia y Ciencias");       //Agregando Los dos primeros tours
+        //Agregando Los dos primeros tours
+        agregarTourCJ("t1_PI.txt","Áreas de las Facultades de Odontología, Farmacia y Ciencias");
         agregarTourCJ("t2_PI.txt","Centro Directivo Cultural");
         mostrarIRol();
     }
@@ -142,7 +143,7 @@ public final class Ctrl_Patrimonio {
         int contador=0;
         boolean disponibilidad = modificar_tour.getSelectedButton();
         boolean Repetido = conjunto_tours.nombreExiste(nuevoNombre);
-        if(numTours > 0){
+        if(TourVirtual.getCantTours() > 0){
             if(Repetido == false){
                 while((conjunto_tours.getnombre(contador) == null ? tourViejo != null : !conjunto_tours.getnombre(contador).equals(tourViejo)) && contador <=numTours){
                     contador++;
@@ -163,7 +164,6 @@ public final class Ctrl_Patrimonio {
         }else{
             alerta.ColocarAlerta("No Hay Tour Para Modificar");
         }
-        alerta.ColocarAlerta("Tour Modificado Exitosamente");
     }
     
     private void eliminarTour(){
