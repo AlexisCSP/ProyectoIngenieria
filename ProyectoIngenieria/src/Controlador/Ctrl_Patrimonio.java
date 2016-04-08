@@ -319,13 +319,18 @@ public final class Ctrl_Patrimonio {
     class BotonContinuarListenerST implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            int contador=0;
             if (getCantToursDisponibles() > 0) {
-                int lecturaCJ;
-                lecturaCJ=seleccionar_tour.saberSeleccionCJ ();
-                tourActual = conjunto_tours.Tour(lecturaCJ);
+                String nombreTour;
+                nombreTour=seleccionar_tour.saberSeleccionCJ();
+                // Mientras hayan tours en el conjunto de tours, buscar la posicion del tour con el mismo nombre
+                while((conjunto_tours.getnombre(contador) == null ? nombreTour != null : !conjunto_tours.getnombre(contador).equals(nombreTour)) && contador <=numTours){
+                    contador++;
+                }
+                if(conjunto_tours.getnombre(contador) == null ? nombreTour == null : conjunto_tours.getnombre(contador).equals(nombreTour)){
+                    tourActual = conjunto_tours.Tour(contador);
+                }
                 iterator = tourActual.createIterator();
-                
-                
                 ocultarISeleccionarTour();
                 mostrarIRecorrer();
                 iterator.prox();
