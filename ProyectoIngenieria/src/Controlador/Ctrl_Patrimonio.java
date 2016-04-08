@@ -163,7 +163,7 @@ public final class Ctrl_Patrimonio {
         }else{
             alerta.ColocarAlerta("No Hay Tour Para Modificar");
         }
-        
+        alerta.ColocarAlerta("Tour Modificado Exitosamente");
     }
     
     private void eliminarTour(){
