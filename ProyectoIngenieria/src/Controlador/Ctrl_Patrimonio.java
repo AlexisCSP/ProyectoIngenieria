@@ -231,7 +231,6 @@ public final class Ctrl_Patrimonio {
 
                 } catch (FileNotFoundException | UnsupportedEncodingException ex) {
                     alerta.ColocarAlerta("Error Al Agregar Tour");
-                    Logger.getLogger(Ctrl_Patrimonio.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         
