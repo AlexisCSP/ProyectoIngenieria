@@ -32,32 +32,33 @@
               <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="radio_disponible" min="-2" max="-2" attributes="0"/>
                           <Component id="radio_noDisponible" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="tour_seleccionado" pref="406" max="32767" attributes="0"/>
                           <Component id="nuevo_nombre" max="32767" attributes="0"/>
+                          <Component id="jTextField1" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="85" max="32767" attributes="0"/>
+              <EmptySpace pref="81" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Component id="boton_atras" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="402" max="32767" attributes="0"/>
               <Component id="boton_modificar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
           </Group>
@@ -76,19 +77,21 @@
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="nuevo_nombre" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Component id="radio_disponible" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                       <Component id="radio_noDisponible" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" pref="24" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabel3" alignment="0" min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="boton_atras" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="boton_modificar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -101,7 +104,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Modificar Tour"/>
+        <Property name="text" type="java.lang.String" value="Modificar Tour:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="tour_seleccionado">
@@ -116,14 +119,14 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nuevo Nombre"/>
+        <Property name="text" type="java.lang.String" value="Nuevo Nombre:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="nuevo_nombre">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Disponibilidad"/>
+        <Property name="text" type="java.lang.String" value="Disponibilidad:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="radio_disponible">
@@ -150,6 +153,16 @@
     <Component class="javax.swing.JButton" name="boton_modificar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField1">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nuevo ID:"/>
       </Properties>
     </Component>
   </SubComponents>

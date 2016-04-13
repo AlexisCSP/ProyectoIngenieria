@@ -74,6 +74,10 @@ public class TourVirtual {
         Disponibilidad = d;
     }
     
+    public void setID (int z) {
+        ID=z;
+    }
+    
     public ArrayList<PuntoInteres> getListaPuntosInteres() {
         return ListaPuntosInteres;
     }

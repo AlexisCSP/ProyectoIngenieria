@@ -54,8 +54,6 @@ public class IAgregarTour extends javax.swing.JFrame {
             }
         });
 
-        escribirIDAT.setEditable(false);
-
         boton_atras.setText("Atras");
         boton_atras.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -70,18 +68,13 @@ public class IAgregarTour extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel1)
-                        .addGap(91, 91, 91))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(boton_atras))
-                        .addGap(18, 18, 18)))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(boton_atras)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(escribirIDAT, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -173,6 +166,18 @@ public class IAgregarTour extends javax.swing.JFrame {
         return nombreArchivo;
     }
     
+    public int nombreID () {
+        int nombreID;
+        String text;
+        text=escribirIDAT.getText();
+        if ("".equals(text)) {
+            return -1000;
+        }else{
+            nombreID=Integer.parseInt(text);
+            return nombreID;
+        }
+    }
+    
     public void limpiar () {
         leerNombreAT.setText("");
         leerArchivoAT.setText("");
@@ -184,15 +189,7 @@ public class IAgregarTour extends javax.swing.JFrame {
         nombreTourVirtual = leerNombreAT.getText();
         return nombreTourVirtual;
     }
-    
-    public void escribirID (String IDParaEscribir) {
-        escribirIDAT.setText(IDParaEscribir);
-        
-    }
-    
-    public JTextField getLabelID() {
-        return escribirIDAT;
-    }
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_anadir;

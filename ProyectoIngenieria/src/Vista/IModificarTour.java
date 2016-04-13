@@ -44,15 +44,17 @@ public class IModificarTour extends javax.swing.JFrame {
         radio_noDisponible = new javax.swing.JRadioButton();
         boton_atras = new javax.swing.JButton();
         boton_modificar = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Administrador");
 
-        jLabel1.setText("Modificar Tour");
+        jLabel1.setText("Modificar Tour:");
 
-        jLabel2.setText("Nuevo Nombre");
+        jLabel2.setText("Nuevo Nombre:");
 
-        jLabel3.setText("Disponibilidad");
+        jLabel3.setText("Disponibilidad:");
 
         GrupoDisponibilidad.add(radio_disponible);
         radio_disponible.setText("Disponible");
@@ -64,6 +66,14 @@ public class IModificarTour extends javax.swing.JFrame {
 
         boton_modificar.setText("Modificar");
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Nuevo ID:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,25 +82,26 @@ public class IModificarTour extends javax.swing.JFrame {
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
                         .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(radio_disponible)
                             .addComponent(radio_noDisponible)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tour_seleccionado, 0, 406, Short.MAX_VALUE)
-                            .addComponent(nuevo_nombre))))
-                .addContainerGap(85, Short.MAX_VALUE))
+                            .addComponent(nuevo_nombre)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel4))
+                .addContainerGap(81, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(boton_atras)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 402, Short.MAX_VALUE)
                 .addComponent(boton_modificar)
                 .addGap(61, 61, 61))
         );
@@ -105,16 +116,18 @@ public class IModificarTour extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(nuevo_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(radio_disponible)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(3, 3, 3)
                         .addComponent(radio_noDisponible))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boton_atras)
                     .addComponent(boton_modificar))
@@ -123,6 +136,10 @@ public class IModificarTour extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,6 +215,18 @@ public class IModificarTour extends javax.swing.JFrame {
         return nuevoNombre;
     }
     
+    public int nuevoID () {
+        int nombreID;
+        String text;
+        text=jTextField1.getText();
+        if ("".equals(text)) {
+            return -1000;
+        }else{
+            nombreID=Integer.parseInt(text);
+            return nombreID;
+        }
+    }
+    
     public boolean getSelectedButton()
     {  
         for (Enumeration<AbstractButton> buttons = GrupoDisponibilidad.getElements(); buttons.hasMoreElements();) {
@@ -227,6 +256,8 @@ public class IModificarTour extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField nuevo_nombre;
     private javax.swing.JRadioButton radio_disponible;
     private javax.swing.JRadioButton radio_noDisponible;

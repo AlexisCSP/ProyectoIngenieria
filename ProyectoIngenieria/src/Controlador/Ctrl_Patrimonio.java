@@ -63,8 +63,8 @@ public final class Ctrl_Patrimonio {
         addListeners();
         agregarPuntosInteres();
         //Agregando Los dos primeros tours
-        agregarTourCJ("t1_PI.txt","Áreas de las Facultades de Odontología, Farmacia y Ciencias");
-        agregarTourCJ("t2_PI.txt","Centro Directivo Cultural");
+        agregarTourCJ("t1_PI.txt","Áreas de las Facultades de Odontología, Farmacia y Ciencias", 1);
+        agregarTourCJ("t2_PI.txt","Centro Directivo Cultural", 2);
         mostrarIRol();
     }
     
@@ -143,11 +143,13 @@ public final class Ctrl_Patrimonio {
     private void modificarTour(){
         String tourViejo=modificar_tour.tourSeleccionado();
         String nuevoNombre= modificar_tour.nuevoNombre();
+        int NuevoID = modificar_tour.nuevoID();
         int contador=0;
         boolean disponibilidad = modificar_tour.getSelectedButton();
         boolean Repetido = conjunto_tours.nombreExiste(nuevoNombre);
+        boolean IDRepetido = conjunto_tours.IDExiste(NuevoID);
         if(TourVirtual.getCantTours() > 0){
-            if(Repetido == false){
+            if(Repetido == false && (IDRepetido==false || NuevoID==-1000)){
                 // Mientras hayan tours en el conjunto de tours, buscar la posicion del tour con el mismo nombre
                 while((conjunto_tours.getnombre(contador) == null ? tourViejo != null : !conjunto_tours.getnombre(contador).equals(tourViejo)) && contador <=numTours){
                     contador++;
@@ -157,18 +159,24 @@ public final class Ctrl_Patrimonio {
                     conjunto_tours.Tour(contador).setDisponibilidad(disponibilidad);
                     if ("".equals(nuevoNombre)) {
                         alerta.ColocarAviso("Tour Modificado Exitosamente");
+                        if (NuevoID!=-1000) {
+                        conjunto_tours.Tour(contador).setID(NuevoID);
+                        }
                     } else {
                         conjunto_tours.Tour(contador).setNombre(nuevoNombre);
                         alerta.ColocarAviso("Tour Modificado Exitosamente");
+                         if (NuevoID!=-1000) {
+                        conjunto_tours.Tour(contador).setID(NuevoID);
+                         }
                     } 
                 } else {
-                    alerta.ColocarAdvertencia("Tour No Existente");
+                    alerta.ColocarAdvertencia("Error al Modificar Tour");
                 }
             } else {
-                alerta.ColocarAdvertencia("Nombre Del Tour Ya Existe");
+                alerta.ColocarAdvertencia("Error al Modificar Tour");
             }
         }else{
-            alerta.ColocarAdvertencia("No Hay Tour Para Modificar");
+            alerta.ColocarAdvertencia("Error al Modificar Tour");
         }
     }
     
@@ -193,18 +201,19 @@ public final class Ctrl_Patrimonio {
         
     }
     
-    private void agregarTourCJ(String nombreArchivo ,String nombreTourVirtual) throws UnsupportedEncodingException, IOException {
+    private void agregarTourCJ(String nombreArchivo ,String nombreTourVirtual, int IDActual) throws UnsupportedEncodingException, IOException {
             String lecturaCJ;
             int iCJ;
             ArrayList<PuntoInteres> ListaPuntosInteresDeTour;
             ListaPuntosInteresDeTour = new ArrayList<>();
-            if (!conjunto_tours.nombreExiste(nombreTourVirtual)) {
+            if (!conjunto_tours.nombreExiste(nombreTourVirtual) && !conjunto_tours.IDExiste(IDActual)) {
                 // Se intenta abrir el archivo que contiene los puntos de interes
                 try (InputStream reCJ = new FileInputStream(new File(getClass().getClassLoader().getResource("data/" + nombreArchivo).getFile()));){
                     BufferedReader readCJ= new BufferedReader(new InputStreamReader(reCJ, "UTF-8"));
                     if (numTours==0) {
                         conjunto_tours.addTourVirtual();
                         conjunto_tours.agregarNombre(numTours, nombreTourVirtual);
+                        conjunto_tours.agregarID(numTours, IDActual);
                         while ((lecturaCJ = readCJ.readLine()) != null) {
                             String[] parts = lecturaCJ.split("#", -1);
                             lecturaCJ = parts[1];
@@ -220,6 +229,7 @@ public final class Ctrl_Patrimonio {
                     }else{
                         conjunto_tours.addTourVirtual();
                         conjunto_tours.agregarNombre(numTours, nombreTourVirtual);
+                        conjunto_tours.agregarID(numTours, IDActual);
                         while ((lecturaCJ = readCJ.readLine()) != null) {
                             String[] parts = lecturaCJ.split("#", -1);
                             lecturaCJ = parts[1];
@@ -240,6 +250,8 @@ public final class Ctrl_Patrimonio {
                 } catch (NullPointerException | FileNotFoundException | UnsupportedEncodingException ex) {
                     alerta.ColocarAdvertencia("Error Al Agregar Tour");
                 }
+            }else{
+              alerta.ColocarAdvertencia("Error Al Agregar Tour");  
             }
         
     }
@@ -504,7 +516,7 @@ public final class Ctrl_Patrimonio {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                agregarTourCJ(agregar_tour.nombreDelArchivo(),agregar_tour.nombreTourVirtual());
+                agregarTourCJ(agregar_tour.nombreDelArchivo(),agregar_tour.nombreTourVirtual(), agregar_tour.nombreID());
             } catch (IOException ex) {
                 Logger.getLogger(Ctrl_Patrimonio.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -593,7 +605,7 @@ public final class Ctrl_Patrimonio {
     }
 
     private void mostrarIAgregarTour() {
-        agregar_tour.getLabelID().setText(Integer.toString(TourVirtual.getNumeroID()));
+        
         agregar_tour.setVisible(true);
     }
     

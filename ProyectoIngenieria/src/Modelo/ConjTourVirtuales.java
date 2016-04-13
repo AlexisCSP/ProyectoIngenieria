@@ -37,6 +37,23 @@ public class ConjTourVirtuales {
         return false;
     }
     
+    public boolean IDExiste(int IDa){
+        int contador=0;
+        
+        if (IDa!=-1000) {
+        while(contador <ListaToursVirtuales.size()){
+                if(ListaToursVirtuales.get(contador).getID()!=IDa){
+                } else {
+                    return true;
+                }
+                contador=contador+1;
+            }
+        return false;
+        }else{
+            return true;
+        }
+    }
+    
     public void deleteTour(int ID){
         ListaToursVirtuales.remove(ID);
         ListaToursVirtuales.trimToSize();
@@ -51,6 +68,13 @@ public class ConjTourVirtuales {
         TourVirtual cambiarCJ;
         cambiarCJ =  ListaToursVirtuales.get(Tour);
         cambiarCJ.setNombre(nombreTourActual);
+        ListaToursVirtuales.set(Tour, cambiarCJ);
+    }
+    
+    public void agregarID (int Tour, int IDTourActual) {
+        TourVirtual cambiarCJ;
+        cambiarCJ =  ListaToursVirtuales.get(Tour);
+        cambiarCJ.setID(IDTourActual);
         ListaToursVirtuales.set(Tour, cambiarCJ);
     }
     
