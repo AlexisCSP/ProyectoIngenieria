@@ -44,7 +44,7 @@ public class IModificarTour extends javax.swing.JFrame {
         radio_noDisponible = new javax.swing.JRadioButton();
         boton_atras = new javax.swing.JButton();
         boton_modificar = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        nuevo_id = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,9 +66,9 @@ public class IModificarTour extends javax.swing.JFrame {
 
         boton_modificar.setText("Modificar");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        nuevo_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                nuevo_idActionPerformed(evt);
             }
         });
 
@@ -95,7 +95,7 @@ public class IModificarTour extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tour_seleccionado, 0, 406, Short.MAX_VALUE)
                             .addComponent(nuevo_nombre)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(nuevo_id, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel4))
                 .addContainerGap(81, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -118,7 +118,7 @@ public class IModificarTour extends javax.swing.JFrame {
                     .addComponent(nuevo_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nuevo_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,9 +137,9 @@ public class IModificarTour extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void nuevo_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevo_idActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_nuevo_idActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,7 +218,7 @@ public class IModificarTour extends javax.swing.JFrame {
     public int nuevoID () {
         int nombreID;
         String text;
-        text=jTextField1.getText();
+        text=nuevo_id.getText();
         if ("".equals(text)) {
             return -1000;
         }else{
@@ -245,6 +245,7 @@ public class IModificarTour extends javax.swing.JFrame {
     
     public void limpiar () {
         nuevo_nombre.setText("");
+        nuevo_id.setText("");
         GrupoDisponibilidad.clearSelection();
     }
     
@@ -257,7 +258,7 @@ public class IModificarTour extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField nuevo_id;
     private javax.swing.JTextField nuevo_nombre;
     private javax.swing.JRadioButton radio_disponible;
     private javax.swing.JRadioButton radio_noDisponible;
