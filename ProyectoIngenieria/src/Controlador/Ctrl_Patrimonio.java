@@ -170,13 +170,13 @@ public final class Ctrl_Patrimonio {
                          }
                     } 
                 } else {
-                    alerta.ColocarAdvertencia("Error al Modificar Tour");
+                    alerta.ColocarAdvertencia("Error: Nombre anteriormente asignado");
                 }
             } else {
-                alerta.ColocarAdvertencia("Error al Modificar Tour");
+                alerta.ColocarAdvertencia("Error: El ID o el Nombre estan en uso");
             }
         }else{
-            alerta.ColocarAdvertencia("Error al Modificar Tour");
+            alerta.ColocarAdvertencia("Error: No hay tours para modificar");
         }
     }
     
@@ -196,7 +196,7 @@ public final class Ctrl_Patrimonio {
             }
             alerta.ColocarAviso("Tour Eliminado Exitosamente");
         } else {
-            alerta.ColocarAdvertencia("No hay Tours para Eliminar");
+            alerta.ColocarAdvertencia("Error: No hay Tours para Eliminar");
         }
         
     }
@@ -206,54 +206,57 @@ public final class Ctrl_Patrimonio {
             int iCJ;
             ArrayList<PuntoInteres> ListaPuntosInteresDeTour;
             ListaPuntosInteresDeTour = new ArrayList<>();
-            if (!conjunto_tours.nombreExiste(nombreTourVirtual) && !conjunto_tours.IDExiste(IDActual)) {
-                // Se intenta abrir el archivo que contiene los puntos de interes
-                try (InputStream reCJ = new FileInputStream(new File(getClass().getClassLoader().getResource("data/" + nombreArchivo).getFile()));){
-                    BufferedReader readCJ= new BufferedReader(new InputStreamReader(reCJ, "UTF-8"));
-                    if (numTours==0) {
-                        conjunto_tours.addTourVirtual();
-                        conjunto_tours.agregarNombre(numTours, nombreTourVirtual);
-                        conjunto_tours.agregarID(numTours, IDActual);
-                        while ((lecturaCJ = readCJ.readLine()) != null) {
-                            String[] parts = lecturaCJ.split("#", -1);
-                            lecturaCJ = parts[1];
-                            iCJ=0;       
-                                while (iCJ<totalPuntosCJ && (lecturaCJ == null ? conjunto_puntos.IDActual(iCJ) != null : !lecturaCJ.equals(conjunto_puntos.IDActual(iCJ)))) {
-                                    iCJ++;
+            if(!"".equals(nombreArchivo) && !"".equals(nombreTourVirtual)&& IDActual!=-1000){
+                if (!conjunto_tours.nombreExiste(nombreTourVirtual) && !conjunto_tours.IDExiste(IDActual)) {
+                    // Se intenta abrir el archivo que contiene los puntos de interes
+                    try (InputStream reCJ = new FileInputStream(new File(getClass().getClassLoader().getResource("data/" + nombreArchivo).getFile()));){
+                        BufferedReader readCJ= new BufferedReader(new InputStreamReader(reCJ, "UTF-8"));
+                        if (numTours==0) {
+                            conjunto_tours.addTourVirtual();
+                            conjunto_tours.agregarNombre(numTours, nombreTourVirtual);
+                            conjunto_tours.agregarID(numTours, IDActual);
+                            while ((lecturaCJ = readCJ.readLine()) != null) {
+                                String[] parts = lecturaCJ.split("#", -1);
+                                lecturaCJ = parts[1];
+                                iCJ=0;       
+                                    while (iCJ<totalPuntosCJ && (lecturaCJ == null ? conjunto_puntos.IDActual(iCJ) != null : !lecturaCJ.equals(conjunto_puntos.IDActual(iCJ)))) {
+                                        iCJ++;
+                                    }
+                                if (iCJ<totalPuntosCJ){
+                                    ListaPuntosInteresDeTour.add(conjunto_puntos.getPuntoActual(iCJ));
                                 }
-                            if (iCJ<totalPuntosCJ){
-                                ListaPuntosInteresDeTour.add(conjunto_puntos.getPuntoActual(iCJ));
                             }
-                        }
-                        conjunto_tours.guardarPuntosInteresTour(numTours , ListaPuntosInteresDeTour);
-                    }else{
-                        conjunto_tours.addTourVirtual();
-                        conjunto_tours.agregarNombre(numTours, nombreTourVirtual);
-                        conjunto_tours.agregarID(numTours, IDActual);
-                        while ((lecturaCJ = readCJ.readLine()) != null) {
-                            String[] parts = lecturaCJ.split("#", -1);
-                            lecturaCJ = parts[1];
-                            iCJ=0;       
-                                while (iCJ<totalPuntosCJ && (lecturaCJ == null ? conjunto_puntos.IDActual(iCJ) != null : !lecturaCJ.equals(conjunto_puntos.IDActual(iCJ)))) {
-                                    iCJ++;
-                                }
+                            conjunto_tours.guardarPuntosInteresTour(numTours , ListaPuntosInteresDeTour);
+                        }else{
+                            conjunto_tours.addTourVirtual();
+                            conjunto_tours.agregarNombre(numTours, nombreTourVirtual);
+                            conjunto_tours.agregarID(numTours, IDActual);
+                            while ((lecturaCJ = readCJ.readLine()) != null) {
+                                String[] parts = lecturaCJ.split("#", -1);
+                                lecturaCJ = parts[1];
+                                iCJ=0;       
+                                    while (iCJ<totalPuntosCJ && (lecturaCJ == null ? conjunto_puntos.IDActual(iCJ) != null : !lecturaCJ.equals(conjunto_puntos.IDActual(iCJ)))) {
+                                        iCJ++;
+                                    }
 
-                            if (iCJ<totalPuntosCJ){
-                              ListaPuntosInteresDeTour.add(conjunto_puntos.getPuntoActual(iCJ));
+                                if (iCJ<totalPuntosCJ){
+                                  ListaPuntosInteresDeTour.add(conjunto_puntos.getPuntoActual(iCJ));
+                                }
                             }
+                            conjunto_tours.guardarPuntosInteresTour(numTours , ListaPuntosInteresDeTour);
                         }
-                        conjunto_tours.guardarPuntosInteresTour(numTours , ListaPuntosInteresDeTour);
+                        numTours++;
+                        alerta.ColocarAviso("Tour Agregado Exitosamente");
+
+                    } catch (NullPointerException | FileNotFoundException | UnsupportedEncodingException ex) {
+                        alerta.ColocarAdvertencia("Error: No se consiguió el archivo");
                     }
-                    numTours++;
-                    alerta.ColocarAviso("Tour Agregado Exitosamente");
-
-                } catch (NullPointerException | FileNotFoundException | UnsupportedEncodingException ex) {
-                    alerta.ColocarAdvertencia("Error Al Agregar Tour");
+                }else{
+                  alerta.ColocarAdvertencia("Error: Nombre del Tour o ID está en uso");  
                 }
             }else{
-              alerta.ColocarAdvertencia("Error Al Agregar Tour");  
+                alerta.ColocarAdvertencia("Error: Debe llenar todos los campos correspondientes");
             }
-        
     }
  
     public ArrayList<TourVirtual> getToursDisponibles() {
