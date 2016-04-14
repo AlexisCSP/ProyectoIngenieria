@@ -63,11 +63,11 @@ public class IAlerta extends javax.swing.JFrame {
                         .addComponent(jTextField2)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 235, Short.MAX_VALUE)
+                        .addGap(0, 250, Short.MAX_VALUE)
                         .addComponent(boton_ok)
                         .addGap(27, 27, 27))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addGap(119, 119, 119)
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
         );

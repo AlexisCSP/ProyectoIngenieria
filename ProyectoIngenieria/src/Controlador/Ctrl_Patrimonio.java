@@ -607,8 +607,7 @@ public final class Ctrl_Patrimonio {
         seleccionar_tour.setLocationRelativeTo(null);
     }
 
-    private void mostrarIAgregarTour() {
-        
+    private void mostrarIAgregarTour() { 
         agregar_tour.setVisible(true);
     }
     
@@ -624,15 +623,25 @@ public final class Ctrl_Patrimonio {
     
     @SuppressWarnings("unchecked")
     private void mostrarIEliminarTour() {
-        eliminar_tour.getComboBox().setModel(new DefaultComboBoxModel(conjunto_tours.getListaToursVirtuales().toArray()));
+        DefaultComboBoxModel cb = new DefaultComboBoxModel(getToursDisponibles().toArray());
+        String temp = "No existen tours para eliminar";
+        if (cb.getSize() == 0) {
+            cb.addElement(temp);
+        }
+        eliminar_tour.getComboBox().setModel(cb);
         eliminar_tour.setVisible(true);
     }
     
     @SuppressWarnings("unchecked")
     private void mostrarIModificarTour() {
-        modificar_tour.getComboBox().setModel(new DefaultComboBoxModel(conjunto_tours.getListaToursVirtuales().toArray()));
+        DefaultComboBoxModel cb = new DefaultComboBoxModel(getToursDisponibles().toArray());
+        String temp = "No existen tours para modificar";
+        if (cb.getSize() == 0) {
+            cb.addElement(temp);
+        }
+        modificar_tour.getComboBox().setModel(cb);
         String nombreTour = String.valueOf(modificar_tour.getComboBox().getSelectedItem());
-        if (modificar_tour.getComboBox().getSelectedItem() != null) {
+        if (!nombreTour.equals(temp) && modificar_tour.getComboBox().getSelectedItem() != null) {
             setRadioButton(nombreTour);
         }
         modificar_tour.setVisible(true);
@@ -660,7 +669,12 @@ public final class Ctrl_Patrimonio {
     
     @SuppressWarnings("unchecked")
     private void mostrarISeleccionarTour() {
-        seleccionar_tour.getComboBox().setModel(new DefaultComboBoxModel(getToursDisponibles().toArray()));
+        DefaultComboBoxModel cb = new DefaultComboBoxModel(getToursDisponibles().toArray());
+        if (cb.getSize() == 0) {
+            String temp = "No hay tours disponibles actualmente";
+            cb.addElement(temp);
+        }
+        seleccionar_tour.getComboBox().setModel(cb);
         seleccionar_tour.setVisible(true);
     }
     
