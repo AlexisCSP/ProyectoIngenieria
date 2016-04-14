@@ -69,9 +69,6 @@ public final class Ctrl_Patrimonio {
         // Agrega los escuchadores de los eventos de las interfaces
         addListeners();
         agregarPuntosInteres();
-        //Agregando Los dos primeros tours
-        agregarTourCJ("t1_PI.txt","Áreas de las Facultades de Odontología, Farmacia y Ciencias", 1);
-        agregarTourCJ("t2_PI.txt","Centro Directivo Cultural", 2);
         mostrarIRol();
     }
     
@@ -151,6 +148,8 @@ public final class Ctrl_Patrimonio {
         String tourViejo=modificar_tour.tourSeleccionado();
         String nuevoNombre= modificar_tour.nuevoNombre();
         int NuevoID = modificar_tour.nuevoID();
+        String textoCJ=nuevoNombre;
+        textoCJ=textoCJ.replaceAll(" ", "");
         int contador=0;
         boolean disponibilidad = modificar_tour.getSelectedButton();
         boolean Repetido = conjunto_tours.nombreExiste(nuevoNombre);
@@ -164,7 +163,7 @@ public final class Ctrl_Patrimonio {
                 // Se modifica la disponibilidad y si no se coloca nombre nuevo se deja el anterior, sino se cambia por el nuevo
                 if(conjunto_tours.getnombre(contador) == null ? tourViejo == null : conjunto_tours.getnombre(contador).equals(tourViejo)){
                     conjunto_tours.Tour(contador).setDisponibilidad(disponibilidad);
-                    if ("".equals(nuevoNombre)) {
+                    if ("".equals(nuevoNombre) || "".equals(textoCJ)) {
                         alerta.ColocarAviso("Tour Modificado Exitosamente");
                         if (NuevoID!=-1000) {
                         conjunto_tours.Tour(contador).setID(NuevoID);
@@ -211,9 +210,11 @@ public final class Ctrl_Patrimonio {
     private void agregarTourCJ(String nombreArchivo ,String nombreTourVirtual, int IDActual) throws UnsupportedEncodingException, IOException {
             String lecturaCJ;
             int iCJ;
+            String textoCJ=nombreTourVirtual;
+            textoCJ=textoCJ.replaceAll(" ", "");
             ArrayList<PuntoInteres> ListaPuntosInteresDeTour;
             ListaPuntosInteresDeTour = new ArrayList<>();
-            if(!"".equals(nombreArchivo) && !"".equals(nombreTourVirtual)&& IDActual!=-1000){
+            if(!"".equals(nombreArchivo) && !"".equals(nombreTourVirtual)&& IDActual!=-1000 && !"".equals(textoCJ)){
                 if (!conjunto_tours.nombreExiste(nombreTourVirtual) && !conjunto_tours.IDExiste(IDActual)) {
                     // Se intenta abrir el archivo que contiene los puntos de interes
                     try (InputStream reCJ = new FileInputStream(new File(getClass().getClassLoader().getResource("data/" + nombreArchivo).getFile()));){

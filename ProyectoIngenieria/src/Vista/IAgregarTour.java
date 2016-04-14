@@ -31,10 +31,8 @@ public class IAgregarTour extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         leerNombreAT = new javax.swing.JTextField();
-        leerArchivoAT = new javax.swing.JTextField();
         escribirIDAT = new javax.swing.JTextField();
         boton_atras = new javax.swing.JButton();
         boton_anadir = new javax.swing.JButton();
@@ -44,15 +42,7 @@ public class IAgregarTour extends javax.swing.JFrame {
 
         jLabel1.setText("Nombre del Tour");
 
-        jLabel2.setText("Nombre del archivo del Tour");
-
         jLabel3.setText("ID del Tour");
-
-        leerArchivoAT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                leerArchivoATActionPerformed(evt);
-            }
-        });
 
         boton_atras.setText("Atras");
         boton_atras.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -71,17 +61,14 @@ public class IAgregarTour extends javax.swing.JFrame {
                 .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel2)
                     .addComponent(boton_atras)
                     .addComponent(jLabel1))
-                .addGap(18, 18, 18)
+                .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(escribirIDAT, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(boton_anadir)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(leerNombreAT)
-                            .addComponent(leerArchivoAT, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE))))
+                        .addComponent(leerNombreAT, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -91,19 +78,15 @@ public class IAgregarTour extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(leerNombreAT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(leerArchivoAT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(escribirIDAT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
+                    .addComponent(escribirIDAT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boton_atras)
                     .addComponent(boton_anadir))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -112,10 +95,6 @@ public class IAgregarTour extends javax.swing.JFrame {
     private void boton_atrasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boton_atrasKeyPressed
 
     }//GEN-LAST:event_boton_atrasKeyPressed
-
-    private void leerArchivoATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leerArchivoATActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_leerArchivoATActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,7 +153,7 @@ public class IAgregarTour extends javax.swing.JFrame {
      */
     public String nombreDelArchivo () {
         String nombreArchivo;
-        nombreArchivo = leerArchivoAT.getText();
+        nombreArchivo =  "t" + escribirIDAT.getText() + "_PI.txt";
         return nombreArchivo;
     }
     
@@ -199,7 +178,6 @@ public class IAgregarTour extends javax.swing.JFrame {
      */
     public void limpiar () {
         leerNombreAT.setText("");
-        leerArchivoAT.setText("");
         escribirIDAT.setText("");
     }
     
@@ -219,9 +197,7 @@ public class IAgregarTour extends javax.swing.JFrame {
     private javax.swing.JButton boton_atras;
     private javax.swing.JTextField escribirIDAT;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField leerArchivoAT;
     private javax.swing.JTextField leerNombreAT;
     // End of variables declaration//GEN-END:variables
 }
