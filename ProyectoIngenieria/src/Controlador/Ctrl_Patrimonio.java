@@ -623,7 +623,7 @@ public final class Ctrl_Patrimonio {
     
     @SuppressWarnings("unchecked")
     private void mostrarIEliminarTour() {
-        DefaultComboBoxModel cb = new DefaultComboBoxModel(getToursDisponibles().toArray());
+        DefaultComboBoxModel cb = new DefaultComboBoxModel(conjunto_tours.getListaToursVirtuales().toArray());
         String temp = "No existen tours para eliminar";
         if (cb.getSize() == 0) {
             cb.addElement(temp);
@@ -634,7 +634,7 @@ public final class Ctrl_Patrimonio {
     
     @SuppressWarnings("unchecked")
     private void mostrarIModificarTour() {
-        DefaultComboBoxModel cb = new DefaultComboBoxModel(getToursDisponibles().toArray());
+        DefaultComboBoxModel cb = new DefaultComboBoxModel(conjunto_tours.getListaToursVirtuales().toArray());
         String temp = "No existen tours para modificar";
         if (cb.getSize() == 0) {
             cb.addElement(temp);
