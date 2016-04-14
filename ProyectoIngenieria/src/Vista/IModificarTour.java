@@ -13,8 +13,8 @@ import javax.swing.AbstractButton;
 import javax.swing.JRadioButton;
 
 /**
- *
- * @author alexis
+ * interfaz para Modificar un Tour
+ * @author Equipo #4
  */
 public class IModificarTour extends javax.swing.JFrame {
 
@@ -176,23 +176,42 @@ public class IModificarTour extends javax.swing.JFrame {
         });
     }
     
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonAtras
+     */
     public void addBotonAtrasListener(ActionListener listenForBotonAtras) {
         boton_atras.addActionListener(listenForBotonAtras);
     }
 
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonModificar
+     */
     public void addBotonModificarListener(ActionListener listenForBotonModificar) {
         boton_modificar.addActionListener(listenForBotonModificar);
     }
     
+    /**
+     * Agrega escuchador del evento de seleccionar un item del combo box
+     * @param listenForComboBox
+     */
     public void addComboBoxListener(ItemListener listenForComboBox) {
         tour_seleccionado.addItemListener(listenForComboBox);
     }
     
-    
+    /**
+     * Retorna el combo box del tour seleccionado a modificar
+     * @return el combo box del tour seleccionado a modificar
+     */
     public JComboBox<String> getComboBox() {
         return tour_seleccionado;
     }
     
+    /**
+     * Retorna el nombre del tour a modificar
+     * @return nombre de tour a modificar
+     */
     public String tourSeleccionado(){
         if (tour_seleccionado.getSelectedItem() != null) {
             String x = tour_seleccionado.getSelectedItem().toString();
@@ -201,20 +220,36 @@ public class IModificarTour extends javax.swing.JFrame {
         return "";
     }
     
+    /**
+     * Retorna radio button de disponible
+     * @return radio button de disponible
+     */
     public JRadioButton getRadioDisponible() {
         return radio_disponible;
     }
     
+    /**
+     * Retorna radio button de no disponible
+     * @return redio button de no disponible
+     */
     public JRadioButton getRadioNoDisponible() {
         return radio_noDisponible;
     }
     
+    /**
+     * Retorna nombre nuevo del tour a modificar
+     * @return nombre nuevo del tour a modificar
+     */
     public String nuevoNombre () {
         String nuevoNombre;
         nuevoNombre = nuevo_nombre.getText();
         return nuevoNombre;
     }
     
+    /**
+     * Retorna ID nuevo del tour a modificar
+     * @return ID nuevo del tour a modificar
+     */
     public int nuevoID () {
         int nombreID;
         String text;
@@ -227,6 +262,10 @@ public class IModificarTour extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Retorna valor del radio buton seleccionado
+     * @return valor del radio buton seleccionado
+     */
     public boolean getSelectedButton()
     {  
         for (Enumeration<AbstractButton> buttons = GrupoDisponibilidad.getElements(); buttons.hasMoreElements();) {
@@ -243,6 +282,9 @@ public class IModificarTour extends javax.swing.JFrame {
         return false;
     }
     
+    /**
+     * Limpia la interfaz de los datos anteriores
+     */
     public void limpiar () {
         nuevo_nombre.setText("");
         nuevo_id.setText("");

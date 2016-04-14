@@ -6,19 +6,49 @@
 package Modelo;
 
 /**
- *
- * @author alexis
+ * SuperClase base para implementar el patron iterator
+ * @author Equipo #4
  */
 public abstract class Indice {
     
+    /**
+     *
+     */
     public Indice () {
     
     }
     
+    /**
+     *
+     */
     public abstract void inicializar ();
+
+    /**
+     *
+     */
     public abstract void prox ();
+
+    /**
+     *
+     * @return
+     */
     public abstract boolean end ();
+
+    /**
+     *
+     * @return
+     */
     public abstract PuntoInteres elemActual ();
+
+    /**
+     *
+     * @return
+     */
     public abstract int getTamano();
+
+    /**
+     *
+     * @return
+     */
     public abstract int getIndex();
 }

@@ -11,6 +11,10 @@ package Modelo;
  */
 public class Arquitectura extends Obra {
     
+    /**
+     * Constructor de Arquitectura, llama a superclase para inicializar los atributos heredados
+     * @param datos
+     */
     public Arquitectura(String[] datos) {
         super(datos);
     }

@@ -8,8 +8,8 @@ package Vista;
 import java.awt.event.ActionListener;
 
 /**
- *
- * @author alexis
+ * Interfaz para seleccionar el Rol del usuario
+ * @author Equipo #4
  */
 public class IRol extends javax.swing.JFrame {
 
@@ -20,12 +20,19 @@ public class IRol extends javax.swing.JFrame {
         initComponents();
     }
     
-    
-public void addBotonVisitanteListener(ActionListener listenForBotonVisitante) {
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonVisitante
+     */
+    public void addBotonVisitanteListener(ActionListener listenForBotonVisitante) {
     boton_visitante.addActionListener(listenForBotonVisitante);
 }
 
-public void addBotonAdministradorListener(ActionListener listenForBotonAdministrador) {
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonAdministrador
+     */
+    public void addBotonAdministradorListener(ActionListener listenForBotonAdministrador) {
     boton_administrador.addActionListener(listenForBotonAdministrador);
 }
 

@@ -9,8 +9,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 
 /**
- *
- * @author alexis
+ * Interfaz para agregar un tour
+ * @author Equipo #4
  */
 public class IAgregarTour extends javax.swing.JFrame {
 
@@ -152,20 +152,36 @@ public class IAgregarTour extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonAtras
+     */
     public void addBotonAtrasListener(ActionListener listenForBotonAtras) {
         boton_atras.addActionListener(listenForBotonAtras);
     }
 
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonAnadir
+     */
     public void addBotonAnadirListener(ActionListener listenForBotonAnadir) {
         boton_anadir.addActionListener(listenForBotonAnadir);
     }
     
+    /**
+     * Retorna nombre del archivo ingresado
+     * @return nombre del archivo ingresado
+     */
     public String nombreDelArchivo () {
         String nombreArchivo;
         nombreArchivo = leerArchivoAT.getText();
         return nombreArchivo;
     }
     
+    /**
+     * Retorna ID del tour ingresado
+     * @return ID del tour ingresado
+     */
     public int nombreID () {
         int nombreID;
         String text;
@@ -178,12 +194,19 @@ public class IAgregarTour extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Limpia la interfaz de los datos anteriores
+     */
     public void limpiar () {
         leerNombreAT.setText("");
         leerArchivoAT.setText("");
         escribirIDAT.setText("");
     }
     
+    /**
+     * Retorna nombre del tour virtual ingresado
+     * @return nombre del tour virtual ingresado
+     */
     public String nombreTourVirtual () {
         String nombreTourVirtual;
         nombreTourVirtual = leerNombreAT.getText();

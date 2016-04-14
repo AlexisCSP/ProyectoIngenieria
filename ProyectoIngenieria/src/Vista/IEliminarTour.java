@@ -9,8 +9,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 
 /**
- *
- * @author alexis
+ * Interfaz de Eliminar un Tour
+ * @author Equipo #4
  */
 public class IEliminarTour extends javax.swing.JFrame {
 
@@ -113,18 +113,34 @@ public class IEliminarTour extends javax.swing.JFrame {
         });
     }
     
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonAtras
+     */
     public void addBotonAtrasListener(ActionListener listenForBotonAtras) {
         boton_atras.addActionListener(listenForBotonAtras);
     }
 
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonEliminar
+     */
     public void addBotonEliminarListener(ActionListener listenForBotonEliminar) {
         boton_eliminar.addActionListener(listenForBotonEliminar);
     }
     
+    /**
+     * Retorna ComboBox de seleccion del tour a eliminar
+     * @return ComboBox de seleccion del tour a eliminar
+     */
     public JComboBox<String> getComboBox() {
         return tour_seleccionado;
     }
     
+    /**
+     * Retorna el nombre del tour seleccionado en el combo box
+     * @return el nombre del tour seleccionado en el combo box
+     */
     public String tourSeleccionado(){
         if (tour_seleccionado.getSelectedItem() != null) {
             String x = tour_seleccionado.getSelectedItem().toString();

@@ -8,8 +8,8 @@ package Vista;
 import java.awt.event.ActionListener;
 
 /**
- *
- * @author alexis
+ * Interfaz para seleccionar tipo de accion a realizar por el Comite
+ * @author Equipo #4
  */
 public class IOpciones extends javax.swing.JFrame {
 
@@ -123,17 +123,34 @@ public class IOpciones extends javax.swing.JFrame {
         });
     }
     
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonAnadir
+     */
     public void addBotonAnadirListener(ActionListener listenForBotonAnadir) {
         boton_anadir.addActionListener(listenForBotonAnadir);
     }
 
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonEliminar
+     */
     public void addBotonEliminarListener(ActionListener listenForBotonEliminar) {
         boton_eliminar.addActionListener(listenForBotonEliminar);
     }
+
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonModificar
+     */
     public void addBotonModificarListener(ActionListener listenForBotonModificar) {
         boton_modificar.addActionListener(listenForBotonModificar);
     }
 
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonVolver
+     */
     public void addBotonVolverListener(ActionListener listenForBotonVolver) {
         boton_volver.addActionListener(listenForBotonVolver);
     }

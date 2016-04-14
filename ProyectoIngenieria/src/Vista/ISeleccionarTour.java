@@ -9,8 +9,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 
 /**
- *
- * @author alexis
+ * Interfaz para Seleccionar el tour a recorrer
+ * @author Equipo #4
  */
 public class ISeleccionarTour extends javax.swing.JFrame {
 
@@ -134,18 +134,34 @@ public class ISeleccionarTour extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonAtras
+     */
     public void addBotonAtrasListener(ActionListener listenForBotonAtras) {
         boton_atras.addActionListener(listenForBotonAtras);
     }
 
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonContinuar
+     */
     public void addBotonContinuarListener(ActionListener listenForBotonContinuar) {
         boton_continuar.addActionListener(listenForBotonContinuar);
     }
 
+    /**
+     * Retorna el Combo Box del tour a seleccionar
+     * @return Combo Box del tour a seleccionar
+     */
     public JComboBox<String> getComboBox() {
         return jComboBox1;
     }
     
+    /**
+     * Retorna nombre del tour seleccionado
+     * @return Nombre del tour seleccionado
+     */
     public String saberSeleccionCJ () {
         return jComboBox1.getSelectedItem().toString();
     }

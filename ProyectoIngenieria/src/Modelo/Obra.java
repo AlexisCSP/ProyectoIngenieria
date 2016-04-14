@@ -6,11 +6,15 @@
 package Modelo;
 
 /**
- *
- * @author alexis
+ * Clase Obra, superClase de Obra de Arte y Arquitectura
+ * @author Equipo #4
  */
 public abstract class Obra {
     
+    /**
+     * Constructor que inicializa los datos de una obra
+     * @param parts
+     */
     public Obra(String[] parts) {
         Numero = parts[0];
         ID = parts[1];
@@ -42,21 +46,64 @@ public abstract class Obra {
         return Nombre;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getID () {
         return ID;
     }
     
+    /**
+     * Retorna numero de la obra
+     * @return numero de la obra
+     */
     public String getNumero() {
         return Numero;
     }
     
+    /**
+     *
+     */
     protected String Numero;
+
+    /**
+     *
+     */
     protected String ID;
+
+    /**
+     *
+     */
     protected String Nombre;
+
+    /**
+     *
+     */
     protected String Autor;
+
+    /**
+     *
+     */
     protected String AnoCreacion;
+
+    /**
+     *
+     */
     protected String Ubicacion;
+
+    /**
+     *
+     */
     protected String Descripcion;
+
+    /**
+     *
+     */
     protected String Categoria;
+
+    /**
+     *
+     */
     protected Imagen Image;
 }

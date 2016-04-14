@@ -7,6 +7,10 @@ package Vista;
 
 import java.awt.event.ActionListener;
 
+/**
+ * Interfaz de alerta que pueden ser generadas
+ * @author Equipo #4
+ */
 public class IAlerta extends javax.swing.JFrame {
 
     /**
@@ -96,16 +100,28 @@ public class IAlerta extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_boton_okKeyPressed
 
+    /**
+     * Coloca la frase de la alerta que sera mostrada
+     * @param frase
+     */
     public void ColocarAlerta(String frase){
         jLabel1.setText("Recordatorio");
         jTextField2.setText(frase);
     }
     
+    /**
+     * Coloca Aviso como tipo de alerta
+     * @param frase
+     */
     public void ColocarAviso(String frase){
         jLabel1.setText("");
         jTextField2.setText(frase);
     }
     
+    /**
+     * Coloca Advertencia como tipo de alerta
+     * @param frase
+     */
     public void ColocarAdvertencia(String frase){
         jLabel1.setText("Advertencia");
         jTextField2.setText(frase);
@@ -146,11 +162,19 @@ public class IAlerta extends javax.swing.JFrame {
         });
     }
     
- public javax.swing.JButton getBotonOk() {
+    /**
+     * Retorna el boton de OK
+     * @return el boton de OK
+     */
+    public javax.swing.JButton getBotonOk() {
      return boton_ok;
  }
     
- public void addBotonOKListener(ActionListener listenForBotonOK) {
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonOK
+     */
+    public void addBotonOKListener(ActionListener listenForBotonOK) {
     boton_ok.addActionListener(listenForBotonOK);
 }
 

@@ -8,8 +8,8 @@ package Vista;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 /**
- *
- * @author alexis
+ * Interfaz para recorrer el tour
+ * @author Equipo #4
  */
 public class IRecorrerTour extends javax.swing.JFrame {
 
@@ -178,34 +178,63 @@ public class IRecorrerTour extends javax.swing.JFrame {
         });
     }
     
- public void addBotonFinalizarListener(ActionListener listenForBotonFinalizar) {
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonFinalizar
+     */
+    public void addBotonFinalizarListener(ActionListener listenForBotonFinalizar) {
     boton_finalizar.addActionListener(listenForBotonFinalizar);
 }
 
-public void addBotonContinuarListener(ActionListener listenForBotonContinuar) {
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonContinuar
+     */
+    public void addBotonContinuarListener(ActionListener listenForBotonContinuar) {
     boton_continuar.addActionListener(listenForBotonContinuar);
 }
 
-public void setBarraProgreso(int i,int total){
+    /**
+     * Inicializa la barra de progreso
+     * @param i
+     * @param total
+     */
+    public void setBarraProgreso(int i,int total){
     int numero = (i*100) / (total-1);               //Algoritmo para saber que promedio mostrar
     Barra_progreso.setValue(numero);
 }
 
-public void mostrarNombre (String nombreCJ) {
+    /**
+     * Muestra el nombre del Puntos de Interes
+     * @param nombreCJ
+     */
+    public void mostrarNombre (String nombreCJ) {
     jTextField2.setText(nombreCJ);
     
 }
 
-public void mostrarNombreTourActual (String IDCJ){
+    /**
+     * Muestra el Nombre del Tour Actual
+     * @param IDCJ
+     */
+    public void mostrarNombreTourActual (String IDCJ){
     jTextField1.setText(IDCJ);
     
 }
 
-public void mostrarCaracteristicas (String mostrarCJ) {
+    /**
+     * Muestras las Caracteristicas de la obra
+     * @param mostrarCJ
+     */
+    public void mostrarCaracteristicas (String mostrarCJ) {
     jTextArea1.setText(mostrarCJ);
 }
 
-public void mostrarImagen(String rutaIMG) {
+    /**
+     * Muestra la imagen de la Obra
+     * @param rutaIMG
+     */
+    public void mostrarImagen(String rutaIMG) {
     ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource(rutaIMG));
     jLabel3.setIcon(icon);
 }

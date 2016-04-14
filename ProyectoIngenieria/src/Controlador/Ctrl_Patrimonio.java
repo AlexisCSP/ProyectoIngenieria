@@ -26,6 +26,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 
+/**
+ * Clase que define al controlador
+ * @author Equipo #4
+ */
 public final class Ctrl_Patrimonio {
     // Vistas
     private IAgregarTour agregar_tour;
@@ -50,7 +54,10 @@ public final class Ctrl_Patrimonio {
     private ConjTourVirtuales conjunto_tours;
     private ConjPuntosInteres conjunto_puntos;
     
-    
+    /**
+     * Constructor del controlador, inicia toda la logica para ejecutar el programa
+     * @throws IOException
+     */
     public Ctrl_Patrimonio() throws IOException {
         numTours=0;
         totalPuntosCJ=0;
@@ -259,6 +266,10 @@ public final class Ctrl_Patrimonio {
             }
     }
  
+    /**
+     * Crea y retorna una lista de los Tours Virtuales Disponibles
+     * @return Lista de Tours Virtuales Disponibles
+     */
     public ArrayList<TourVirtual> getToursDisponibles() {
         ArrayList<TourVirtual> toursDisponibles = new ArrayList<>();
         ArrayList<TourVirtual> tours = conjunto_tours.getListaToursVirtuales();
@@ -271,6 +282,10 @@ public final class Ctrl_Patrimonio {
         return toursDisponibles;
     }
     
+    /**
+     * Retorna la cantidad de Tours Virtuales Disponibles
+     * @return cantidad de tours virtuales disponibles
+     */
     public int getCantToursDisponibles() {
         int size = conjunto_tours.getListaToursVirtuales().size();
         int cantidad = 0;
@@ -282,10 +297,18 @@ public final class Ctrl_Patrimonio {
         return cantidad;
     }
     
+    /**
+     * Verifica la contraseña ingresada por el comité
+     * @return true si la contraseña es correcta y falso en caso contrario
+     */
     public boolean contrasenaCorrecta() {
         return "12345678".equals(new String(contrasena.getPassword()));
     }
     
+    /**
+     * Selecciona el radio button correspondiente a la disponibilidad actual del tour seleccionado
+     * @param nombreTour
+     */
     public void setRadioButton(String nombreTour) {
        int contador=0;
        // Mientras hayan tours en el conjunto de tours, buscar la posicion del tour con el mismo nombre
@@ -381,6 +404,9 @@ public final class Ctrl_Patrimonio {
         }    
     }
     
+    /**
+     * Determina accion a tomar al pasar al siguiente punto de interes
+     */
     public void SiguienteObra(){
         if (iterator.end()) {
             ocultarIRecorrer();

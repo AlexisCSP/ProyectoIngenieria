@@ -9,8 +9,8 @@ import com.sun.glass.events.KeyEvent;
 import java.awt.event.ActionListener;
 
 /**
- *
- * @author alexis
+ * Interfaz de la contraseña
+ * @author Equipo #4
  */
 public class IContrasena extends javax.swing.JFrame {
 
@@ -123,22 +123,41 @@ public class IContrasena extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonAtras
+     */
     public void addBotonAtrasListener(ActionListener listenForBotonAtras) {
         boton_atras.addActionListener(listenForBotonAtras);
     }
     
+    /**
+     * Agrega escuchador del evento de darle enter al escribir la contraseña
+     * @param pressEnter
+     */
     public void addEnterContraseña(ActionListener pressEnter){
         jPasswordField1.addActionListener(pressEnter);
     }
 
+    /**
+     * Agrega escuchador del evento de presionar el boton
+     * @param listenForBotonContinuar
+     */
     public void addBotonContinuarListener(ActionListener listenForBotonContinuar) {
         boton_continuar.addActionListener(listenForBotonContinuar);
     }
     
+    /**
+     * Retorna la contraseña ingresada
+     * @return la contraseña ingresada
+     */
     public char[] getPassword() {
         return jPasswordField1.getPassword();
     }
     
+    /**
+     * Limpia la interface de los datos anteriores
+     */
     public void limpiar () {
         jPasswordField1.setText("");
     }
