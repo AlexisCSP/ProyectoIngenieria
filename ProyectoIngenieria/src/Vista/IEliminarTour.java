@@ -36,6 +36,7 @@ public class IEliminarTour extends javax.swing.JFrame {
         boton_eliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Comité de Obras de Arte");
 
         jLabel1.setText("Tour a Eliminar");
 

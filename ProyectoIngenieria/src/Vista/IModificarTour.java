@@ -48,7 +48,7 @@ public class IModificarTour extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Administrador");
+        setTitle("Comité de Obras de Arte");
 
         jLabel1.setText("Modificar Tour:");
 

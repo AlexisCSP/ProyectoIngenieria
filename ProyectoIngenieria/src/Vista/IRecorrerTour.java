@@ -42,6 +42,7 @@ public class IRecorrerTour extends javax.swing.JFrame {
         Barra_progreso = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Visitante");
 
         jLabel1.setText("Tour Virtual");
 

@@ -60,7 +60,7 @@ public void addBotonAdministradorListener(ActionListener listenForBotonAdministr
             }
         });
 
-        boton_administrador.setText("Administrador");
+        boton_administrador.setText("Comité");
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel2.setText("Tours Virtuales UCV");
@@ -77,11 +77,11 @@ public void addBotonAdministradorListener(ActionListener listenForBotonAdministr
                         .addGap(18, 18, 18)
                         .addComponent(boton_visitante)
                         .addGap(18, 18, 18)
-                        .addComponent(boton_administrador))
+                        .addComponent(boton_administrador, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(jLabel2)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

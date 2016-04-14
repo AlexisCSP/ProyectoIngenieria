@@ -32,14 +32,14 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="boton_visitante" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="boton_administrador" min="-2" max="-2" attributes="0"/>
+                      <Component id="boton_administrador" min="-2" pref="103" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="33" max="32767" attributes="0"/>
+              <EmptySpace pref="64" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -76,7 +76,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="boton_administrador">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Administrador"/>
+        <Property name="text" type="java.lang.String" value="Comit&#xe9;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">

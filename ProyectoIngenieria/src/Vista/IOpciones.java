@@ -36,7 +36,7 @@ public class IOpciones extends javax.swing.JFrame {
         boton_volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Administrador");
+        setTitle("Comité de Obras de Arte");
 
         jLabel1.setText("Seleccione una opcion");
 

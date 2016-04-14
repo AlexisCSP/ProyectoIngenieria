@@ -40,7 +40,7 @@ public class IAgregarTour extends javax.swing.JFrame {
         boton_anadir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Administrador");
+        setTitle("Comité de Obras de Arte");
 
         jLabel1.setText("Nombre del Tour");
 
